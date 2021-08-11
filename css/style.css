@@ -4,6 +4,7 @@
     grid-template-rows: 1080px;
     grid-template-areas: 
     "options1 main options2";
+    background-color: #a6bddb;
 }
 .main,.options1,.options2{
     background-color: #a6bddb;
