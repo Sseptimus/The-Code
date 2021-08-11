@@ -1,6 +1,6 @@
 .wrapper{
     display:grid;
-    grid-template-columns: 265pt 876px 265pt;
+    grid-template-columns: 22.1em 876px 22.1em;
     grid-template-rows: 1080px;
     grid-template-areas: 
     "options1 main options2";
