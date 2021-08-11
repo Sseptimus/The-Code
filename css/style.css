@@ -1,4 +1,10 @@
 .wrapper{
     display:grid;
-    gri 
+    grid-template-columns: 265pt 876px 265pt;
+    grid-template-rows: 1080px;
+    grid-template-areas: 
+    "options1 main options2";
+}
+.main,.options1,.options2{
+    background-color: #a6bddb;
 }
