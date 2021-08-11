@@ -1,11 +1,20 @@
 .wrapper{
     display:grid;
-    grid-template-columns: 22.1em 876px 22.1em;
+    box-sizing: border-box;
     grid-template-rows: 1080px;
     grid-template-areas: 
     "options1 main options2";
-    background-color: #a6bddb;
+    background-color: black;
+
 }
 .main,.options1,.options2{
     background-color: #a6bddb;
+}
+.options1{
+    width: 100%;
+    float: left;
+}
+.options2{
+    width: 100%;
+    float: right;
 }
