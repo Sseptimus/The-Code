@@ -6,14 +6,30 @@
 </head>
 <body style="margin:0">
     <div class = "wrapper">
-        <div class = "options1">
-            <p>1</p>
-        </div>
         <div class = "main">
-            <img src="img/Map_of_New_Zealand_(edited).png"alt="Loading..." style="height:100vh;width:33.3vw;">
+            <img src="img/Map_of_New_Zealand_(edited).png"alt="Loading..." style="height:99.5vh;width:auto;">
+            <script>
+                var current = 0;
+                var x = document.getElementByClass(main).getElementsByTagName('img');
+                var totalwidth = x.clientWidth;
+                x.addEventListener("scroll", zoom());
+                function zoom() {
+                    document.write("c")
+                    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+                    if (scrolled>current){
+                        document.write("f")
+                        var imgwidth = x.clientWidth;
+                        x.style.width = (imgwidth+100) + "px";
+                    }else{
+                        var imgwidth = x.clientWidth;
+                        x.style.width = (imgwidth-100) + "px"
+                    }
+                    current = scrolled
+                }
+            </script>
         </div>
-        <div class = "options2">
-            <p>2</p>
+        <div class = "options1">
+            <input>
         </div>
     </div>
 </body>

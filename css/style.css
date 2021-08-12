@@ -3,26 +3,24 @@
     box-sizing: border-box;
     
     grid-template-areas: 
-    "options1 main options2";
+    "main options1";
     background-color: black;
 
 }
-.main,.options1,.options2{
+.main,.options1{
     background-color: #a6bddb;
 }
+
 .options1{
-    width: 33.3vw;
-    height: 100%;
-    float: left;
-}
-.options2{
-    width: 33.3vw;
+    width: auto;
     height: 100%;
     float: right;
 }
 .main img{
     object-fit: fill;
+    float: left;
 }
 .main{
-    height: 100%;
+    width: auto;
+    float:left;
 }
