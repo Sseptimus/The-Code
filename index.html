@@ -7,25 +7,10 @@
 <body style="margin:0">
     <div class = "wrapper">
         <div class = "main">
-            <img src="img/Map_of_New_Zealand_(edited).png"alt="Loading..." style="height:99.5vh;width:auto;">
+            <img src="img\Map_of_New_Zealand_(edited).svg"alt="Loading..." style="height:99.5vh;width:auto;">
+            <script src="https://d3js.org/d3.v7.min.js"></script>
             <script>
-                var current = 0;
-                var x = document.getElementByClass(main).getElementsByTagName('img');
-                var totalwidth = x.clientWidth;
-                x.addEventListener("scroll", zoom());
-                function zoom() {
-                    document.write("c")
-                    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-                    if (scrolled>current){
-                        document.write("f")
-                        var imgwidth = x.clientWidth;
-                        x.style.width = (imgwidth+100) + "px";
-                    }else{
-                        var imgwidth = x.clientWidth;
-                        x.style.width = (imgwidth-100) + "px"
-                    }
-                    current = scrolled
-                }
+
             </script>
         </div>
         <div class = "options1">
