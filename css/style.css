@@ -12,15 +12,13 @@
 }
 
 .options1{
-    width: auto;
-    height: 100%;
+    width: 44vw;
+    height: 99.5vh;
     float: right;
 }
-.main img{
-    object-fit: fill;
+.main object{
     float: left;
 }
 .main{
-    width: auto;
     float:left;
 }
