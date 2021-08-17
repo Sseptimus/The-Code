@@ -1,3 +1,7 @@
+body{
+    background-color: #a6bddb;
+}
+
 .wrapper{
     display:grid;
     grid-template-columns: 22.1em 876px 22.1em;
@@ -7,4 +11,9 @@
 }
 .main,.options1,.options2{
     background-color: #a6bddb;
+}
+
+.map{
+    width: 873px;
+    height: 1080px;
 }
