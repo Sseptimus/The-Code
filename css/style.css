@@ -28,6 +28,9 @@ body{
 .main{
     float:left;
 }
+.strains{
+    display: none;
+}
 #nzmap path:hover{
     fill: gray;
 }

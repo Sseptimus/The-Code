@@ -100,6 +100,53 @@
         </div>
         <div class = "options1">
             <h1>Parameters</h1>
+            <div class = "parameters">
+                <label>Social Distancing</label>
+                <input type="range" min="0" max="100" value="0" id="distancerange">
+                <input type="text" disabled="disabled" id="distance">
+                <script>
+                    document.getElementById("distance").oninput=function(){
+                        document.getElementById("distance").value = document.getElementById("distancerange").value
+                    };
+                    
+                </script>
+                <br><br>
+                <label>Mask Wearing</label>
+                <input type="checkbox">
+                <br><br>
+                <label>Vaccination</label>
+                <input type="range" min="0" max="100" value="0">
+                <br><br>
+                <label id="dropdown">COVID strain</label>
+                <script>
+                    document.getElementById("dropdown").hover(()=>{
+                        document.getElementsByClassName("strains").style("display","block")
+                    });
+                </script>
+                <div class = "strains">
+                    <ul>
+                        <li>
+                            <label>Alpha</label>
+                            <input type="checkbox">
+                        </li>
+                        <li>
+                            <label>Beta</label>
+                            <input type="checkbox">
+                        </li>
+                        <li>
+                            <label>Gamma</label>
+                            <input type="checkbox">
+                        </li>
+                        <li>
+                            <label>Delta</label>
+                            <input type="checkbox">
+                        </li>
+                    </ul>
+                </div>
+                <br>
+                <label>Travel Restriction</label>
+                <input type="checkbox">
+            </div>
         </div>
     </div>
 </body>
