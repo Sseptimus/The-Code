@@ -19,7 +19,7 @@ body{
     width: 33.3vw;
     height: 99.5vh;
     float: right;
-    box-shadow: 0 0 15px 10px #a6bddb;
+    box-shadow: 0 0 10px 10px #a6bddb;
     color:white;
 }
 .main object{
@@ -27,4 +27,7 @@ body{
 }
 .main{
     float:left;
+}
+#NZL5480:hover,#NZL5479:hover,#NZL5478:hover,#NZL5477:hover,#NZL5469:hover,#NZL5468:hover,#NZL3408:hover,#NZL3407:hover,#NZL3406:hover,#NZL3405:hover,#NZL3404:hover,#NZL3403:hover,#NZL3402:hover,#NZL3401:hover,#NZL3400:hover,#NZL3399:hover,#NZL3398:hover,#NZL3397:hover,#NZL3396:hover,#NZL3334:hover{
+    fill: gray;
 }
