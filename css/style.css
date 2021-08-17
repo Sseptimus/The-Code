@@ -12,9 +12,11 @@
 }
 
 .options1{
-    width: 44vw;
+    width: 33.3vw;
     height: 99.5vh;
     float: right;
+    box-shadow: 0 0 15px 10px #a6bddb;
+    color:white;
 }
 .main object{
     float: left;
