@@ -4,16 +4,27 @@ body{
 
 .wrapper{
     display:grid;
-    grid-template-columns: 22.1em 876px 22.1em;
-    grid-template-rows: 1080px;
+    box-sizing: border-box;
+    
     grid-template-areas: 
-    "options1 main options2";
+    "main options1";
+    background-color: black;
+
 }
-.main,.options1,.options2{
+.main,.options1{
     background-color: #a6bddb;
 }
 
-.map{
-    width: 873px;
-    height: 1080px;
+.options1{
+    width: 33.3vw;
+    height: 99.5vh;
+    float: right;
+    box-shadow: 0 0 15px 10px #a6bddb;
+    color:white;
+}
+.main object{
+    float: left;
+}
+.main{
+    float:left;
 }
