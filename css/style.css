@@ -42,7 +42,10 @@ body{
 #nzmap path[selected="yes"]:hover{
     fill: orange;
 }
-.parameters{
+#distancerange,#vacrange{
+    width: 50%;
+}
+/*.parameters{
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-areas: 
@@ -52,15 +55,15 @@ body{
     "travel itravel",
     "strain istrain";
     grid-template-rows: auto;
+    width: max-content;
 }
-/*.text{
-    float: left;
+.text{
     width:max-content;
-    padding: 10px;
-    vertical-align: middle;
+    line-height: 155%;
 }
 .input{
     width:min-content;
-    padding: 10px;
-    vertical-align: middle;
-}*/
+    float:left;
+}
+
+

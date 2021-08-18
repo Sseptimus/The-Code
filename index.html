@@ -118,57 +118,54 @@
             </script>
             <div class = "parameters">
                 
-                <div class = "text">
-                    <div class="distance">
-                        <label>Social Distancing:</label>
-                        <label id=distance>0%</label>
-                    </div>
-                    <div class ="vaccination">
-                        <label>Vaccination:</label>
-                        <label id="vac">0%</label>
-                    </div>
-                    <div class = "mask">
-                        <label>Mask Wearing</label>
-                    </div>
-                    <div class="travel">
-                        <label>Travel Restriction</label>
-                    </div>
-                    <div class="strain">
-                        <label>Covid Strain</label>
-                    </div>
                 
+                <div class="distance">
+                    <input id ="distancerange" type="range" min="0" max="100" value="0" oninput="updatedist()">
+                    <label>Social Distancing:</label>
+                    <label id=distance>0%</label>
                 </div>
-                <div class = "input">
-                    <div class="idistance">
-                        <input type="range" min="0" max="100" value="0%" id="distancerange" oninput="updatedist()">
-                    </div>
-                    <div class="ivac">
-                        <input id ="vacrange" type="range" min="0" max="100" value="0%" oninput="updatevac()">
-                    </div>
-                    <div class="imask">
-                        <input type="checkbox">
-                    </div>
-                    <div class="itravel">
-                        <input type="checkbox">
-                    </div>
-                    <div class="istrain">
-                        <select>
-                            <option value="alpha">
-                                Alpha
-                            </option>
-                            <option value="beta">
-                                Beta
-                            </option>
-                            <option value="gamma">
-                                Gamma
-                            </option>
-                            <option value="delta">
-                                Delta
-                            </option>
-                        </select>
-                    </div>
+                <div class ="vaccination">
+                    <input id ="vacrange" type="range" min="0" max="100" value="0" oninput="updatevac()">
+                    <label>Vaccination:</label>
+                    <label id="vac">0%</label>
+                </div>
+                <div class = "mask">
+                    <input type="checkbox">
+                    <label>Mask Wearing</label>
+                </div>
+                <div class="travel">
+                    <input type="checkbox">
+                    <label>Travel Restriction</label>
+                </div>
+                <div class="strain">
+                    <label>Covid Strain:</label><br>
+                    &nbsp;
+                    <label>
+                        <input type="radio" id="alpha" name="radiostrain">
+                        Alpha
+                    </label>
+                    <br>
+                    &nbsp;
+                    <label>
+                        <input type="radio" id="beta" name="radiostrain">
+                        Beta
+                    </label><br>
+                    &nbsp;
+                    <label>
+                        <input type="radio" id="gamma" name="radiostrain">
+                        Gamma
+                    </label><br>
+                    &nbsp;
+                    <label>
+                        <input type="radio" id="delta" name="radiostrain">
+                        Delta
+                    </label><br>
                     
                 </div>
+                
+                
+                
+                
             </div>
         </div>
     </div>
