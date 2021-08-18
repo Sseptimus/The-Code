@@ -28,6 +28,11 @@ body{
 .main{
     float:left;
 }
+
+.parameter{
+    margin-bottom: 1em;
+}
+
 #strains{
     display: none;
 }

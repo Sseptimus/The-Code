@@ -100,45 +100,50 @@
         </div>
         <div class = "options1">
             <h1>Parameters</h1>
+            <script>
+                function updatedist(){
+                    document.getElementById("distance").innerHTML = document.getElementById("distancerange").value + "%";
+                }
+                function updatevac(){
+                    document.getElementById("vac").innerHTML = document.getElementById("vacrange").value + "%";
+                }
+            </script>
             <div class = "parameters">
-                <label>Social Distancing:</label>
-                <label id=distance>0%</label>
-                <input type="range" min="0" max="100" value="0%" id="distancerange" oninput="updatedist()">
-                
-                <script>
-                    function updatedist(){
-                        document.getElementById("distance").innerHTML = document.getElementById("distancerange").value + "%";
-                    }
-                    function updatevac(){
-                        document.getElementById("vac").innerHTML = document.getElementById("vacrange").value + "%";
-                    }
-                </script>
-                <br><br>
-                <label>Mask Wearing</label>
-                <input type="checkbox">
-                <br><br>
-                <label>Vaccination:</label>
-                <label id="vac">0%</label>
-                <input id ="vacrange" type="range" min="0" max="100" value="0%" oninput="updatevac()">
-                <br><br>
-                <label>Covid Strain</label>
-                <select>
-                    <option value="alpha">
-                        Alpha
-                    </option>
-                    <option value="beta">
-                        Beta
-                    </option>
-                    <option value="gamma">
-                        Gamma
-                    </option>
-                    <option value="delta">
-                        Delta
-                    </option>
-                </select>
-                <br>
-                <label>Travel Restriction</label>
-                <input type="checkbox">
+                <div class = "parameter">
+                    <label>Social Distancing:</label>
+                    <label id=distance>0%</label>
+                    <input type="range" min="0" max="100" value="0%" id="distancerange" oninput="updatedist()">
+                </div>
+                <div class = "parameter">
+                    <label>Mask Wearing</label>
+                    <input type="checkbox">
+                </div>
+                <div class = "parameter">
+                    <label>Vaccination:</label>
+                    <label id="vac">0%</label>
+                    <input id ="vacrange" type="range" min="0" max="100" value="0%" oninput="updatevac()">
+                </div>
+                <div class = "parameter">
+                    <label>Covid Strain</label>
+                    <select>
+                        <option value="alpha">
+                            Alpha
+                        </option>
+                        <option value="beta">
+                            Beta
+                        </option>
+                        <option value="gamma">
+                            Gamma
+                        </option>
+                        <option value="delta">
+                            Delta
+                        </option>
+                    </select>
+                </div>
+                <div class = "parameter">
+                    <label>Travel Restriction</label>
+                    <input type="checkbox">
+                </div>
             </div>
         </div>
     </div>
