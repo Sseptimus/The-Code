@@ -28,7 +28,7 @@ body{
 .main{
     float:left;
 }
-.strains{
+#strains{
     display: none;
 }
 #nzmap path:hover{
