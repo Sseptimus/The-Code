@@ -37,3 +37,25 @@ body{
 #nzmap path[selected="yes"]:hover{
     fill: orange;
 }
+.parameters{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: 
+    "distance idistance",
+    "vaccination ivac",
+    "mask imask",
+    "travel itravel",
+    "strain istrain";
+    grid-template-rows: auto;
+}
+/*.text{
+    float: left;
+    width:max-content;
+    padding: 10px;
+    vertical-align: middle;
+}
+.input{
+    width:min-content;
+    padding: 10px;
+    vertical-align: middle;
+}*/

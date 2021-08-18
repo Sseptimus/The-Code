@@ -99,46 +99,68 @@
             </script>
         </div>
         <div class = "options1">
+            <script>
+                function updatedist(){
+                    document.getElementById("distance").innerHTML = document.getElementById("distancerange").value + "%";
+                }
+                function updatevac(){
+                    document.getElementById("vac").innerHTML = document.getElementById("vacrange").value + "%";
+                }
+            </script>
             <h1>Parameters</h1>
             <div class = "parameters">
-                <label>Social Distancing:</label>
-                <label id=distance>0%</label>
-                <input type="range" min="0" max="100" value="0%" id="distancerange" oninput="updatedist()">
                 
-                <script>
-                    function updatedist(){
-                        document.getElementById("distance").innerHTML = document.getElementById("distancerange").value + "%";
-                    }
-                    function updatevac(){
-                        document.getElementById("vac").innerHTML = document.getElementById("vacrange").value + "%";
-                    }
-                </script>
-                <br><br>
-                <label>Mask Wearing</label>
-                <input type="checkbox">
-                <br><br>
-                <label>Vaccination:</label>
-                <label id="vac">0%</label>
-                <input id ="vacrange" type="range" min="0" max="100" value="0%" oninput="updatevac()">
-                <br><br>
-                <label>Covid Strain</label>
-                <select>
-                    <option value="alpha">
-                        Alpha
-                    </option>
-                    <option value="beta">
-                        Beta
-                    </option>
-                    <option value="gamma">
-                        Gamma
-                    </option>
-                    <option value="delta">
-                        Delta
-                    </option>
-                </select>
-                <br>
-                <label>Travel Restriction</label>
-                <input type="checkbox">
+                <div class = "text">
+                    <div class="distance">
+                        <label>Social Distancing:</label>
+                        <label id=distance>0%</label>
+                    </div>
+                    <div class ="vaccination">
+                        <label>Vaccination:</label>
+                        <label id="vac">0%</label>
+                    </div>
+                    <div class = "mask">
+                        <label>Mask Wearing</label>
+                    </div>
+                    <div class="travel">
+                        <label>Travel Restriction</label>
+                    </div>
+                    <div class="strain">
+                        <label>Covid Strain</label>
+                    </div>
+                
+                </div>
+                <div class = "input">
+                    <div class="idistance">
+                        <input type="range" min="0" max="100" value="0%" id="distancerange" oninput="updatedist()">
+                    </div>
+                    <div class="ivac">
+                        <input id ="vacrange" type="range" min="0" max="100" value="0%" oninput="updatevac()">
+                    </div>
+                    <div class="imask">
+                        <input type="checkbox">
+                    </div>
+                    <div class="itravel">
+                        <input type="checkbox">
+                    </div>
+                    <div class="istrain">
+                        <select>
+                            <option value="alpha">
+                                Alpha
+                            </option>
+                            <option value="beta">
+                                Beta
+                            </option>
+                            <option value="gamma">
+                                Gamma
+                            </option>
+                            <option value="delta">
+                                Delta
+                            </option>
+                        </select>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     </div>
