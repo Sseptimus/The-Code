@@ -45,25 +45,4 @@ body{
 #distancerange,#vacrange{
     width: 50%;
 }
-/*.parameters{
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-areas: 
-    "distance idistance",
-    "vaccination ivac",
-    "mask imask",
-    "travel itravel",
-    "strain istrain";
-    grid-template-rows: auto;
-    width: max-content;
-}
-.text{
-    width:max-content;
-    line-height: 155%;
-}
-.input{
-    width:min-content;
-    float:left;
-}
-
 

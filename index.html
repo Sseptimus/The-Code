@@ -85,11 +85,17 @@
                             element.attr("selected", "no")
                         }
                         toggled[name] = !toggled[name]
+                        document.getElementById("region").innerHTML = name
+                        document.getElementById("population").innerHTML = populationsOfRegions[name] + " Inhabitants"
                     })
                 })
             </script>
         </div>
         <div class = "options1">
+            <div class = "stats">
+                <h1 id="region">Undefined</h1>
+                <p id="population">Undefined Inhabitants</p>
+            </div>
             <script>
                 function updatedist(){
                     document.getElementById("distance").innerHTML = document.getElementById("distancerange").value + "%";
@@ -125,6 +131,10 @@
                 <div class="travel">
                     <input type="checkbox">
                     <label>Travel Restriction</label>
+                </div>
+                <div class="border">
+                    <input type="checkbox">
+                    <label>Border Restriction</label>
                 </div>
                 <div class="strain">
                     <label>Covid Strain:</label><br>
