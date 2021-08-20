@@ -19,7 +19,7 @@ body{
 .options1{
 
     width: 33.3vw;
-    height: 99.5vh;
+    height: 96vh;
     float: right;
     box-shadow: 0 0 10px 10px #2f3336;
     color: rgb(58, 179, 166);
@@ -36,12 +36,14 @@ body{
 }
 .main{
     float:left;
+    
 }
 
 .parameter{
     margin-bottom: 1em;
     
 }
+
 
 #strains{
     display: none;
