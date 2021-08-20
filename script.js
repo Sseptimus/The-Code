@@ -71,15 +71,15 @@ function lightToDark(){
         eyepain = "ungodly"
         document.getElementById("body").style.backgroundColor = "#2f3336;"
         document.getElementById("body").style.animation = "fadeout2 1s ease forwards"
-        document.getElementById("main").style.backgroundColor = "#add8e6";
+        document.getElementById("main").style.backgroundColor = "#cfd0d5";
         document.getElementById("lightVsDark").innerHTML = "&#9728;&nbsp;&nbsp;&nbsp;&nbsp;";
         document.getElementById("lightVsDark").style.color = "orange";
         document.getElementById("lightVsDark").style.backgroundColor = "white";
         document.getElementById("options1").style.backgroundColor = "white";
         document.getElementById("options1").style.color = "black";
-        document.getElementById("statButton").style.backgroundColor = "#C9C9C9";
-        document.getElementById("statButton").style.color = "black";
-        document.getElementById("nzmap").style.fill = "	#98FB98";
+        document.getElementById("statButton").style.backgroundColor = "#1b1d21";
+        document.getElementById("statButton").style.color = "white";
+        document.getElementById("nzmap").style.fill = "	#fdfdfd";
         document.getElementById("body").style.animation = "fadein2 1s ease forwards"
 
     }else{
@@ -132,17 +132,7 @@ d3.select("svg")
     let name = element.attr("name");
     console.log(name);
     console.log("Popultion:", populationsOfRegions[name]);
-    toggled[name] = false;
     element.on("click", () => {
-        console.log("Clicked " + name);
-        if (!toggled[name]) {
-            element.attr("fill", "#2e848b");
-            element.attr("selected", "yes");
-        } else {
-            element.attr("fill", "#52585d");
-            element.attr("selected", "no");
-        }
-        toggled[name] = !toggled[name];
         document.getElementById("region").innerHTML = name;
         document.getElementById("population").innerHTML = populationsOfRegions[name] + " Inhabitants";
     });
