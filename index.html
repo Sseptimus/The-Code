@@ -6,8 +6,12 @@
 <script src = "res/sim.js"></script>
 </head>
 <body style="margin:0" onload="loaded()">
+
     <div class = "wrapper">
-        <div class = "main">
+        <div class = "main", id = "main">
+            
+
+          
             
             <svg id = "nzmap" baseprofile="tiny" fill="#52585d" height="94vh" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" version="1.2" viewbox="0 0 1000 1982" width="59vw" xmlns="http://www.w3.org/2000/svg">
                 <g>
@@ -55,9 +59,7 @@
                 <h1 id="region">Undefined</h1>
                 <p id="population">Undefined Inhabitants</p>
             </div>
-
-            
-
+            <button id = "lightVsDark", onClick = lightToDark()>&nbsp;&nbsp;&nbsp;&#127769;</button>
             <div class = "parameters", id = "parameters">
                 <h1>Parameters</h1>
                 <div class="distance">
