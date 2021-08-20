@@ -7,6 +7,23 @@ function loaded() {
 }
 
 function switchToStats() {
+    if (state == 1){
+
+        
+        document.getElementById("progressbar").style.width = "10%;";
+        document.getElementById("progressbar").style.height = "5%";
+        var deadprogress = ((population/dead)*100).toString()+"%";
+        var aliveprogress = ((population/alive)*100).toString()+"%";
+        var sickprogress = ((population/sick)*100).toString()+"%";
+        document.getElementById("deadbar").style.width = deadprogress;
+        document.getElementById("alivebar").style.width = aliveprogress;
+        document.getElementById("sickbar").style.width = sickprogress;
+    }else{
+        document.getElementById("progressbar").style.width = "0px;";
+        document.getElementById("deadbar").style.width = "0px;";
+        document.getElementById("alivebar").style.width = "0px;";
+        document.getElementById("sickbar").style.width = "0px;";
+    }
   if (state == 0) {
         state = 1;
         console.log("pressed button");
@@ -96,6 +113,12 @@ if (isMobile) {// tests of the website is in mobile
         console.log("other");
 }
 
+var popultion = 1400000
+
+var dead = 300000
+var sick = 700000
+var alive = population - dead - sick
+
 
 
 d3.select("svg").call(zoom);
@@ -124,4 +147,3 @@ d3.select("svg")
         document.getElementById("population").innerHTML = populationsOfRegions[name] + " Inhabitants";
     });
 });
-

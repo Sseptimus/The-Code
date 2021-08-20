@@ -74,6 +74,7 @@ body{
 #nzmap path:hover{
     fill:#70787e;
     transform: scale(0.99);
+    
 }
 #nzmap path[selected="yes"]:hover{
     fill: #37a0a7;
@@ -82,6 +83,27 @@ body{
 }
 #distancerange,#vacrange{
     width: 50%;
+}
+
+.progressbar{
+    height: 0px;
+    width: 0px;
+}
+.deadbar{
+    height: 0px;
+    width: 0px;
+    color: #660000;
+
+}
+.sickbar{
+    height: 0px;
+    width: 0px;
+    color: rgb(87, 202, 195);
+}
+.alivebar{
+    height: 0px;
+    width: 0px;
+    color: white;
 }
 
 #statButton{
