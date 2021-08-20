@@ -1,5 +1,5 @@
 body{
-    background-color: #a6bddb;
+    background-color: #2f3336;
 }
 
 .wrapper{
@@ -12,14 +12,14 @@ body{
 
 }
 .main,.options1{
-    background-color: #a6bddb;
+    background-color: #2f3336;
 }
 
 .options1{
     width: 33.3vw;
     height: 99.5vh;
     float: right;
-    box-shadow: 0 0 10px 10px #a6bddb;
+    box-shadow: 0 0 10px 10px #2f3336;
     color:white;
 }
 .main object{
@@ -37,10 +37,10 @@ body{
     display: none;
 }
 #nzmap path:hover{
-    fill: gray;
+    fill:#70787e;
 }
 #nzmap path[selected="yes"]:hover{
-    fill: orange;
+    fill: #37a0a7;
 }
 #distancerange,#vacrange{
     width: 50%;
