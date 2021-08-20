@@ -16,7 +16,6 @@ body{
 }
 
 
-
 .options1{
 
     width: 33.3vw;
@@ -55,6 +54,20 @@ body{
 }
 #distancerange,#vacrange{
     width: 50%;
+}
+
+#statButton{
+    background-color: rgb(58, 49, 49);
+    font-size: 24px;
+    border: none;
+    color: orange;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    position: absolute; 
+    right: 15%;
+
 }
 
 
