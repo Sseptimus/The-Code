@@ -18,6 +18,7 @@ body{
 
 
 .options1{
+
     width: 33.3vw;
     height: 99.5vh;
     float: right;
@@ -40,6 +41,7 @@ body{
 
 .parameter{
     margin-bottom: 1em;
+    
 }
 
 #strains{
@@ -54,4 +56,5 @@ body{
 #distancerange,#vacrange{
     width: 50%;
 }
+
 
