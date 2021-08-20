@@ -57,6 +57,7 @@
                     d3.select("svg g")
                         .attr("transform",e.transform);
                 }
+
                 function clicking(id){
                     d3.select(id)
                         .style("fill","red")
@@ -89,10 +90,33 @@
                         document.getElementById("population").innerHTML = populationsOfRegions[name] + " Inhabitants"
                     })
                 })
+                var state = 0;
+                        function switchToStats() {
+                            if (state == 0) {
+                                state = 1
+                console.log("pressed button")
+                document.getElementById("statButton").innerHTML = "Paramaters"
+                var elem = document.getElementById("parameters");
+                elem.remove();
+                document.getElementById("region").innerHTML = "Stats"
+                document.getElementById("options1").style.color="orange";
+                document.getElementById("statButton").style.color="rgb(58, 179, 166)";
+                            }
+                            else {
+                                state == 0
+                document.getElementById("statButton").innerHTML = "Stats"
+                document.getElementById("region").innerHTML = "Undefined"
+                document.getElementById("options1").style.color="rgb(58, 179, 166)";
+                document.getElementById("statButton").style.color="orange";
+                            }
+                
+            }   
+
+
             </script>
         </div>
-        <div class = "options1">
-            <button id="statButton">Stats</button>
+        <div class = "options1", id = "options1">
+            <button id="statButton", onClick = switchToStats()>Stats</button>
             <div class = "stats">
                 <h1 id="region">Undefined</h1>
                 <p id="population">Undefined Inhabitants</p>
@@ -114,7 +138,7 @@
                     document.getElementById("vac").innerHTML = document.getElementById("vacrange").value + "%";
                 }
             </script>
-            <div class = "parameters">
+            <div class = "parameters", id = "parameters">
                 <div class="distance">
                     <input id ="distancerange" type="range" min="0" max="100" value="0" oninput="updatedist()">
                     <label>Social Distancing:</label>
