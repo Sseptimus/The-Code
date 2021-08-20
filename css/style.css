@@ -10,11 +10,14 @@ body{
     "main options1";
     background-color: black;
     z-index: 1;
+    animation: fadein 1s ease forwards;
 
 }
 .main{
     background-color: #2f3336;
+
 }
+
 
 
 .options1{
@@ -101,4 +104,18 @@ svg{
     transform: translateY(-50%);
 }
 
+@keyframes fadeout{
+    from{
+opacity: 1;
+    }to{
+opacity: 0;
+    }
+}
 
+@keyframes fadein{
+    from{
+opacity: 0;
+    }to{
+opacity: 1;
+    }
+}
