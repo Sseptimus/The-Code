@@ -10,7 +10,7 @@ body{
     "main options1";
     background-color: black;
     z-index: 1;
-    animation: fadein 1s ease forwards;
+    animation: fadein 7s ease forwards;
 
 }
 .main{
@@ -119,3 +119,38 @@ opacity: 0;
 opacity: 1;
     }
 }
+
+
+@keyframes fadeout2{
+    from{
+opacity: 1;
+    }to{
+opacity: 0;
+    }
+}
+
+@keyframes fadein2{
+    from{
+opacity: 0;
+    }to{
+opacity: 1;
+    }
+}
+
+
+@keyframes fadeout3{
+    from{
+opacity: 1;
+    }to{
+opacity: 0;
+    }
+}
+
+@keyframes fadein3{
+    from{
+opacity: 0;
+    }to{
+opacity: 1;
+    }
+}
+

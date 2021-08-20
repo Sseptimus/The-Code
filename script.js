@@ -52,7 +52,8 @@ function zooming(e) {
 function lightToDark(){
     if (eyepain == "none"){
         eyepain = "ungodly"
-        document.getElementById("body").style.animation = "fadeout 1s ease forwards"
+        document.getElementById("body").style.backgroundColor = "#2f3336;"
+        document.getElementById("body").style.animation = "fadeout2 1s ease forwards"
         document.getElementById("main").style.backgroundColor = "#add8e6";
         document.getElementById("lightVsDark").innerHTML = "&#9728;&nbsp;&nbsp;&nbsp;&nbsp;";
         document.getElementById("lightVsDark").style.color = "orange";
@@ -62,11 +63,12 @@ function lightToDark(){
         document.getElementById("statButton").style.backgroundColor = "#C9C9C9";
         document.getElementById("statButton").style.color = "black";
         document.getElementById("nzmap").style.fill = "	#98FB98";
-        document.getElementById("body").style.animation = "fadein 1s ease forwards"
+        document.getElementById("body").style.animation = "fadein2 1s ease forwards"
 
     }else{
         eyepain = "none"
-        document.getElementById("body").style.animation = "fadeout 1s ease forwards"
+        document.getElementById("body").style.backgroundColor = "rgb(58, 49, 49);"
+        document.getElementById("body").style.animation = "fadeout3 1s ease forwards"
         document.getElementById("lightVsDark").innerHTML = "&nbsp;&nbsp;&nbsp;&#127769;";
         document.getElementById("lightVsDark").style.color = "purple";
         document.getElementById("lightVsDark").style.backgroundColor = "black";
@@ -76,7 +78,7 @@ function lightToDark(){
         document.getElementById("statButton").style.color = "orange";
         document.getElementById("main").style.backgroundColor = "#2f3336";
         document.getElementById("nzmap").style.fill = "#52585d";
-        document.getElementById("body").style.animation = "fadein 1s ease forwards"
+        document.getElementById("body").style.animation = "fadein3 1s ease forwards"
 
     }
 }
