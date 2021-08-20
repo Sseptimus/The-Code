@@ -73,9 +73,12 @@ body{
 }
 #nzmap path:hover{
     fill:#70787e;
+    transform: scale(0.99);
 }
 #nzmap path[selected="yes"]:hover{
     fill: #37a0a7;
+    transition: all .2s ease-in-out;
+
 }
 #distancerange,#vacrange{
     width: 50%;
