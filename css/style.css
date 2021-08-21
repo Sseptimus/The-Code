@@ -69,9 +69,12 @@ body{
 }
 
 
-#no_mask_icon {
-    height: auto;
-    width: auto;
+#no_masks_icon {
+    top: 15%;
+    left: 15%;
+    object-fit: cover;
+    position: absolute;
+    
 }
 
 #lightVsDark {
