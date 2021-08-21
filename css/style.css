@@ -69,13 +69,6 @@ body{
 }
 
 
-#no_masks_icon, #masks_icon {
-    top: 15%;
-    left: 15%;
-    object-fit: cover;
-    position: absolute;
-    
-}
 
 #lightVsDark {
     position: absolute; 

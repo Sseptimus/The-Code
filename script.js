@@ -124,7 +124,7 @@ if (isMobile) {// tests of the website is in mobile
         console.log("other");
 }
 
-var popultion = 1400000
+var popultion = 1400000 
 
 var dead = 300000
 var sick = 700000
