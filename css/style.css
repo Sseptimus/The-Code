@@ -69,6 +69,11 @@ body{
 }
 
 
+#no_mask_icon {
+    height: auto;
+    width: auto;
+}
+
 #lightVsDark {
     position: absolute; 
     right: 10%;
