@@ -22,7 +22,7 @@ body{
 
 .options1{
 
-    width: 33.3vw;
+    width: 35.7vw;
     height: 96vh;
     float: right;
 
@@ -48,6 +48,25 @@ body{
     
 }
 
+.coolButton{
+    background-color: rgb(41, 35, 35);
+    height: 5vh;
+    width: 6vw;
+    border-radius: 2vh;
+    outline: 2px, solid, grey;
+}
+#coolButtonIcon{
+    background-color: rgb(32, 32, 31);
+    height: 4vh;
+    width: 4vh;
+    border-radius: 2vh;
+    border: solid, grey, 5px;
+}
+
+#coolButtonIcon:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.1)
+}
 
 
 #lightVsDark {
@@ -123,6 +142,9 @@ svg{
     transform: translateY(-50%);
 }
 
+
+
+
 @keyframes fadeout{
     from{
 opacity: 1;
@@ -173,3 +195,20 @@ opacity: 1;
     }
 }
 
+
+@keyframes leftToRight {
+    0% {
+        transform : translateX(0%)
+    }100%{
+        transform : translateX(150%)
+    }
+}
+
+
+@keyframes rightToLeft {
+    from {
+        transform : translateX(150%)
+    }to{
+        transform : translateX(0%)
+    }
+}
