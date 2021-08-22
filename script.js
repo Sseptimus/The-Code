@@ -8,8 +8,13 @@ function loaded() {
 
 function switchToStats() {
     if (state == 1){
-
-        
+        /*
+        const fileUrl = 'stats.html' // provide file location
+        fetch(fileUrl)
+        .then( r => r.text() )
+        .then( t => console.log(t) )
+        document.getElementById("parameters").innerHTML = "t";
+        */
         document.getElementById("progressbar").style.width = "10%;";
         document.getElementById("progressbar").style.height = "5%";
         var deadprogress = ((population/dead)*100).toString()+"%";
@@ -26,6 +31,7 @@ function switchToStats() {
     }
   if (state == 0) {
         state = 1;
+
         console.log("pressed button");
         document.getElementById("statButton").innerHTML = "Paramaters";
         document.getElementById("parameters").style.display = "none";
