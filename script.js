@@ -13,7 +13,7 @@ function switchToStats() {
         fetch(fileUrl)
         .then( r => r.text() )
         .then( t => console.log(t) )
-        document.getElementById("parameters").innerHTML = "t";
+        document.getElementById("parameters").innerHTML = t;
         */
         document.getElementById("progressbar").style.width = "10%;";
         document.getElementById("progressbar").style.height = "5%";
@@ -154,3 +154,12 @@ d3.select("svg")
         document.getElementById("population").innerHTML = populationsOfRegions[name] + " Inhabitants";
     });
 });
+
+
+/*
+const fileUrl = 'paramaters.html' // provide file location
+fetch(fileUrl)
+.then( r => r.text() )
+.then( t => document.getElementById("parameters").innerHTML = t )
+*/
+
