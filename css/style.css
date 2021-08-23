@@ -53,6 +53,15 @@ body{
     
 }
 
+
+
+.graph{
+    width: 50%;
+    height: auto;
+    background-color: black;
+
+}
+
 .coolButton{
     background-color: rgb(41, 35, 35);
     height: 5vh;
