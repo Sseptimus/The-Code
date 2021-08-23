@@ -9,13 +9,11 @@ body{
     grid-template-areas: 
     "main options1";
     background-color: black;
-    z-index: 1;
     animation: fadein 7s ease forwards;
 
 }
 .main{
     background-color: #2f3336;
-
 }
 
 .stats, .Stats{
@@ -24,10 +22,9 @@ body{
 
 .options1{
 
-    width: 33vw;
-    height: 96vh;
+    width: 40vw;
+    height: 95.5vh;
     float: right;
-
     color: grey;
     outline: 2px solid black;
     background-color: #282b2e;
