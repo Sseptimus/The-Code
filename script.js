@@ -97,7 +97,8 @@ function lightToDark(){
         document.getElementById("lightVsDark").style.color = "purple";
         document.getElementById("lightVsDark").style.backgroundColor = "black";
         document.getElementById("options1").style.backgroundColor = "#282b2e";
-        document.getElementById("options1").style.color = "rgb(58, 179, 166)";
+        document.getElementById("options1").style.color = "grey";
+        document.getElementById("title").style.color = "rgb(58, 179, 166)";
         document.getElementById("statButton").style.backgroundColor = "rgb(58, 49, 49)";
         document.getElementById("statButton").style.color = "orange";
         document.getElementById("main").style.backgroundColor = "#2f3336";
