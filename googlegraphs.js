@@ -1,10 +1,12 @@
+console.log("loading chart")
 
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
+
 function drawChart() {
     var data = google.visualization.arrayToDataTable([
-    ['Task', 'Hours per Day'],
+    ['State', 'Number of people'],
     ['dead', 8],
     ['alive', 2],
     ['sick', 2],
