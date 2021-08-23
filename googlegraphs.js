@@ -1,3 +1,6 @@
+//nick said no :(
+
+
 console.log("loading chart")
 
 google.charts.load('current', {'packages':['corechart']});
