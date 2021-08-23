@@ -35,7 +35,8 @@ function switchToStats() {
         document.getElementById("stats").style.display = "grid";
         if (eyepain == "none"){
             document.getElementById("options1").style.color = "orange";
-            document.getElementById("statButton").style.color = "rgb(58, 179, 166)";
+            document.getElementById("statButton").style.color = "green";
+            document.getElementById("parameters").style.color = "grey";
             
         }
   }else{
@@ -53,6 +54,7 @@ function switchToStats() {
             document.getElementById("options1").style.color = "rgb(58, 179, 166)";
             document.getElementById("statButton").style.color = "orange";
             document.getElementById("options1").style.color = "rgb(58, 179, 166)";
+            document.getElementById("parameters").style.color = "grey";
         }
     }
 }
@@ -97,13 +99,13 @@ function lightToDark(){
         document.getElementById("lightVsDark").style.color = "purple";
         document.getElementById("lightVsDark").style.backgroundColor = "black";
         document.getElementById("options1").style.backgroundColor = "#282b2e";
-        document.getElementById("options1").style.color = "grey";
         document.getElementById("title").style.color = "rgb(58, 179, 166)";
         document.getElementById("statButton").style.backgroundColor = "rgb(58, 49, 49)";
         document.getElementById("statButton").style.color = "orange";
         document.getElementById("main").style.backgroundColor = "#2f3336";
         document.getElementById("nzmap").style.fill = "#52585d";
         document.getElementById("body").style.animation = "fadein3 1s ease forwards"
+        document.getElementById("parameters").style.color = "grey";
 
     }
 }

@@ -29,15 +29,18 @@ body{
     color: grey;
     outline: 2px solid black;
     padding-left: 10%;
-    filter: hue-rotate(320deg);
     background-color: #282b2e;
     padding-top: 5%;
     font-family: 'Lato', sans-serif;
     
 }
 
+#alpha, #beta, #gamma, #delta, .mask, .travel, .border, .distance, .vaccination {
+    filter: hue-rotate(320deg);
+}
+
 #title{
-    color: rgb(58, 179, 166);
+    color: green;
 }
 
 .main object{
@@ -134,6 +137,16 @@ body{
     color: white;
 }
 
+#alivepeople{
+    color: white;
+}
+#sickpeople{
+    color: blue;
+}
+#deadpeople{
+    color: red;
+}
+
 #statButton{
     background-color: rgb(58, 49, 49);
     font-size: 24px;
@@ -144,7 +157,7 @@ body{
     text-decoration: none;
     display: inline-block;
     position: absolute; 
-    right: 15%;
+    right: 5%;
 
 
 }
