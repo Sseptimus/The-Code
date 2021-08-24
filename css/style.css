@@ -34,7 +34,23 @@ body{
 }
 
 .simCtrl{
+    position: absolute;
     float: bottom; 
+    bottom: 5%;
+    margin-left: 5%;
+}
+#startSim{
+    background-color: rgb(255, 115, 0);
+}
+
+#startSim:hover{
+    transition: all .2s ease-in-out;
+    transform: scale(1.1)
+}
+
+#speedArrow{
+    transform: translate(17);
+    transform: translatex(150px);
 }
 
 #alpha, #beta, #gamma, #delta, .mask, .travel, .border, .distance, .vaccination {
