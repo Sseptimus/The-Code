@@ -33,6 +33,10 @@ body{
     
 }
 
+.simCtrl{
+    float: bottom; 
+}
+
 #alpha, #beta, #gamma, #delta, .mask, .travel, .border, .distance, .vaccination {
     filter: hue-rotate(320deg);
     margin-left: 10%;
