@@ -76,6 +76,7 @@ function startStop(){
         console.log("start/stop");
         if (runningSim){
             runningSim = false;
+            animatePlay()
 
 
         }else{
