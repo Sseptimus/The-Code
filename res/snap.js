@@ -16,17 +16,17 @@ triangle4.attr("fill", "black");
 
 
 function animatePlay() {
-    triangle1.animate({"points":square1},500,mina.linear);
-    triangle2.animate({"points":square2},500,mina.linear);
-    triangle3.animate({"points":square3},500,mina.linear);
-    triangle4.animate({"points":square4},500,mina.linear);
+    triangle1.animate({"points":square1},100,mina.linear);
+    triangle2.animate({"points":square2},100,mina.linear);
+    triangle3.animate({"points":square3},100,mina.linear);
+    triangle4.animate({"points":square4},100,mina.linear);
 }
 
 function animatePause(){
-    triangle1.animate({"points":trianglePTS},500,mina.linear);
-    triangle2.animate({"points":trianglePTS},500,mina.linear);
-    triangle3.animate({"points":trianglePTS},500,mina.linear);
-    triangle4.animate({"points":trianglePTS},500,mina.linear);
+    triangle1.animate({"points":trianglePTS},100,mina.linear);
+    triangle2.animate({"points":trianglePTS},100,mina.linear);
+    triangle3.animate({"points":trianglePTS},100,mina.linear);
+    triangle4.animate({"points":trianglePTS},100,mina.linear);
 
 }
 
