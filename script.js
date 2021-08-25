@@ -81,11 +81,8 @@ function startStop(){
 
         }else{
             runningSim = true
-            document.getElementById("triangle1").style.animation = "toPauseTRI1 1s ease forwards"
-            document.getElementById("triangle1").style.animation = "toPauseTRI2 1s ease forwards"
-            document.getElementById("triangle1").style.animation = "toPauseTRI3 1s ease forwards"
-            document.getElementById("triangle1").style.animation = "toPauseTRI4 1s ease forwards"
-            console.log("moved triange")
+            animatePause()
+
         }
 }
 

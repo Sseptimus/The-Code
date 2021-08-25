@@ -1,17 +1,33 @@
 var s = Snap("#svgStartIcon")
 var triangle1 = s.polygon([1,1, 1,9, 7,5])
+var square1 = [1,1, 1,9, 2,9]
+var trianglePTS = [1,1, 1,9, 7,5]
 triangle1.attr("fill", "black");
 var triangle2 = s.polygon([1,1, 1,9, 7,5])
+var square2 = [1,1, 2,9, 2,1]
 triangle2.attr("fill", "black");
 var triangle3 = s.polygon([1,1, 1,9, 7,5])
+var square3 = [6,1, 6,9, 7,9]
 triangle3.attr("fill", "black");
 var triangle4 = s.polygon([1,1, 1,9, 7,5])
+var square4 = [6,1, 7,9, 7,1]
 triangle4.attr("fill", "black");
 
 
 
 function animatePlay() {
-    
+    triangle1.animate({"points":square1},500,mina.linear);
+    triangle2.animate({"points":square2},500,mina.linear);
+    triangle3.animate({"points":square3},500,mina.linear);
+    triangle4.animate({"points":square4},500,mina.linear);
+}
+
+function animatePause(){
+    triangle1.animate({"points":trianglePTS},500,mina.linear);
+    triangle2.animate({"points":trianglePTS},500,mina.linear);
+    triangle3.animate({"points":trianglePTS},500,mina.linear);
+    triangle4.animate({"points":trianglePTS},500,mina.linear);
+
 }
 
 /* 

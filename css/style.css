@@ -281,35 +281,3 @@ opacity: 1;
         transform : translateX(0%)
     }
 }
-
-@keyframes toPauseTRI1 {
-    from{
-        points: 1,1 1,9 7,5
-    }to{
-        points: 1,1 1,9 2,9
-    }
-}
-
-@keyframes toPauseTRI2 {
-    from{
-        points: 1,1 1,9 7,5
-    }to{
-        points: 1,1 2,9 2,1
-    }
-}
-
-@keyframes toPauseTRI3 {
-    from{
-        points: 1,1 1,9 7,5
-    }to{
-        points: 6,1 6,9 7,9
-    }
-}
-
-@keyframes toPauseTRI4 {
-    from{
-        points: 1,1 1,9 7,5
-    }to{
-        points: 6,1 7,9 7,1
-    }
-}
