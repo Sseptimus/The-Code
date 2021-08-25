@@ -71,6 +71,17 @@ function clicking(id) {
     d3.select(id).style("fill", "red");
 }
 
+var runningSim = false
+function startStop(){
+        console.log("start/stop");
+        if (runningSim){
+            runningSim = false;
+
+        }else{
+            runningSim = true
+        }
+}
+
 function zooming(e) {
     d3.select("svg g").attr("transform", e.transform);
 }

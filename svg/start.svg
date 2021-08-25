@@ -1,34 +1,14 @@
-<svg height = "10" width = "10">
-<polygon id = "1" points="1,1 1,9 7,5" style="fill:black;stroke:black;stroke-width:.1" />
-<polygon id = "2" points="1,1 1,9 7,5" style="fill:black;stroke:black;stroke-width:.1" />
-<polygon id = "3" points="1,1 1,9 7,5" style="fill:black;stroke:black;stroke-width:.1" />
-<polygon id = "4" points="1,1 1,9 7,5" style="fill:black;stroke:black;stroke-width:.1" />
-<animate href="#1"
- attributeName="points"
- from="1,1 1,9 7,5"
- to="1,1 1,9 2,9"
- dur="2s"
- begin="startSim.click"
- fill="freeze" />
- <animate href="#2"
- attributeName="points"
- from="1,1 1,9 7,5"
- to="1,1 2,9 2,1"
- dur="2s"
- begin="startSim.click"
- fill="freeze" />
- <animate href="#3"
- attributeName="points"
- from="6,1 6,9 12,5"
- to="6,1 6,9 7,9"
- dur="2s"
- begin="startSim.click"
- fill="freeze" />
- <animate href="#4"
- attributeName="points"
- from="6,1 6,9 12,5"
- to="6,1 7,9 7,1"
- dur="2s"
- begin="startSim.click"
- fill="freeze" />
+<svg height="10" width="10">
+    <polygon id="1" points="1,1 1,9 7,5" style="fill:black;stroke:black;stroke-width:.1" />
+    <polygon id="2" points="1,1 1,9 7,5" style="fill:black;stroke:black;stroke-width:.1" />
+    <polygon id="3" points="1,1 1,9 7,5" style="fill:black;stroke:black;stroke-width:.1" />
+    <polygon id="4" points="1,1 1,9 7,5" style="fill:black;stroke:black;stroke-width:.1" />
+    <animate href="#1" attributeName="points" from="1,1 1,9 7,5" to="1,1 1,9 2,9" dur="2s" begin="startSim.click"
+        fill="freeze" />
+    <animate href="#2" attributeName="points" from="1,1 1,9 7,5" to="1,1 2,9 2,1" dur="2s" begin="startSim.click"
+        fill="freeze" />
+    <animate href="#3" attributeName="points" from="6,1 6,9 12,5" to="6,1 6,9 7,9" dur="2s" begin="startSim.click"
+        fill="freeze" />
+    <animate href="#4" attributeName="points" from="6,1 6,9 12,5" to="6,1 7,9 7,1" dur="2s" begin="startSim.click"
+        fill="freeze" />
 </svg>
