@@ -95,12 +95,10 @@ function startStop(){
 function zooming(e) {
     d3.select("svg g").attr("transform", e.transform);
     var scale = e.transform["k"];
-    console.log(scale);
     var zoom = (Math.floor(scale*100).toString())+"%"
     document.getElementById("zoom").innerHTML = zoom;
     //524 30 - 330 572 = 1500km
     //574.34px = 1500km
-    console.log("1px = "+(575.34/1500)*scale+"km")
     var kmToPx = (575.34/1500)*scale
     document.getElementById("px2km").innerHTML = Math.floor(((575.34/1500)*scale)*100).toString()+"Km";
 }
