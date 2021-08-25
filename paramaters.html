@@ -6,6 +6,7 @@
                     <label>Social Distancing:</label>
                     <label id=distance>0%</label>
                 </div>
+                
                 <div class ="vaccination">
                     <input id ="vacrange" type="range" min="0" max="100" value="0" oninput="updatevac()">
                     <label>Vaccination:</label>
@@ -26,6 +27,21 @@
                 </div>
                 </div>
                 <br>
+                <div id="strainTitle"><label>Display setings</label><br></div>
+                <div class = "displaySetings">
+                    
+                        <div class="simSpeed" style="width:200px;">
+                            Simulation speed &nbsp;<select id="selectSpeed">
+                              <option value="1">1x</option>
+                              <option value="2">2x</option>
+                              <option value="3">5x</option>
+                              <option value="4">10x</option>
+                              <option value="5">100x</option>
+                            </select>
+                      </div>
+                      <br>
+                      <button id = "lightVsDark", onClick = lightToDark()>Mode: Dark</button>
+                </div>
                 <div class="strain">
                     <div id="strainTitle"><label>Covid Strain:</label><br></div>
                     

@@ -96,8 +96,8 @@ function lightToDark(){
         document.getElementById("body").style.backgroundColor = "#2f3336;"
         document.getElementById("body").style.animation = "fadeout2 1s ease forwards"
         document.getElementById("main").style.backgroundColor = "#cfd0d5";
-        document.getElementById("lightVsDark").innerHTML = "&#9728;&nbsp;&nbsp;&nbsp;&nbsp;";
-        document.getElementById("lightVsDark").style.color = "orange";
+        document.getElementById("lightVsDark").innerHTML = "Mode: Light";
+        document.getElementById("lightVsDark").style.color = "black";
         document.getElementById("lightVsDark").style.backgroundColor = "white";
         document.getElementById("options1").style.backgroundColor = "white";
         document.getElementById("options1").style.color = "black";
@@ -110,9 +110,9 @@ function lightToDark(){
         eyepain = "none"
         document.getElementById("body").style.backgroundColor = "rgb(58, 49, 49);"
         document.getElementById("body").style.animation = "fadeout3 1s ease forwards"
-        document.getElementById("lightVsDark").innerHTML = "&nbsp;&nbsp;&nbsp;&#127769;";
-        document.getElementById("lightVsDark").style.color = "purple";
-        document.getElementById("lightVsDark").style.backgroundColor = "black";
+        document.getElementById("lightVsDark").innerHTML = "Mode: Dark";
+        document.getElementById("lightVsDark").style.color = "grey";
+        document.getElementById("lightVsDark").style.backgroundColor = "#202020";
         document.getElementById("options1").style.backgroundColor = "#282b2e";
         document.getElementById("title").style.color = "rgb(58, 179, 166)";
         document.getElementById("statButton").style.backgroundColor = "rgb(58, 49, 49)";

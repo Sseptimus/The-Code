@@ -9,7 +9,7 @@ body{
     grid-template-areas: 
     "main options1";
     background-color: black;
-    animation: fadein 7s ease forwards;
+
 
 }
 .main{
@@ -42,14 +42,23 @@ body{
     width: 7%;
 }
 #startSim{
-    background-color: rgba(29, 32, 27, 0.993);
+    background-color: #202020;
     height: 100%;
     width: 100%;
     border-radius: 2vh;
     border: 2px black solid;
 }
 
+.displaySetings{
+    margin-left: 10%;
+    margin-bottom: 5%;
+}
 
+#selectSpeed{
+    background-color: #202020;
+    color: grey;
+    border: 2px black solid;
+}
 
 #svgStartIcon{
     position: relative;
@@ -68,7 +77,7 @@ body{
 
 #startSim:hover{
     transition: all .2s ease-in-out;
-    transform: scale(1.1)
+    transform: scale(1.05)
 }
 
 
@@ -106,50 +115,24 @@ body{
 
 
 
-.graph{
-    width: 50%;
-    height: auto;
-    background-color: black;
 
-}
-
-.coolButton{
-    background-color: rgb(41, 35, 35);
-    height: 5vh;
-    width: 6vw;
-    border-radius: 2vh;
-    outline: 2px, solid, grey;
-}
-#coolButtonIcon{
-    background-color: rgb(32, 32, 31);
-    height: 4vh;
-    width: 4vh;
-    border-radius: 2vh;
-    border: solid, grey, 5px;
-}
 
 #coolButtonIcon:hover {
     transition: all .2s ease-in-out;
-    transform: scale(1.1)
+    transform: scale(1.1);
+
 }
 
 
 
 #lightVsDark {
-    position: absolute; 
-    right: 10%;
-    bottom: 5%;
-    border-radius: 15px;
-    color: rgb(0, 0, 0);
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-right: 15px;
-    padding-left: 15px;
-    background-color: black;
-    width: 65px;
-    color: purple;
-    font-size: 15px;
-    font-weight: bold;
+
+    padding: 5px;
+    color: grey;
+    background-color: #202020;
+    outline: 1px black solid;
+    border: 1px black solid;
+    
 }
 
 
