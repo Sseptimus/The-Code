@@ -59,6 +59,12 @@ function switchToStats() {
     }
 }
 
+document.addEventListener('keyup', event => {
+  if (event.code === 'Space') {
+    startStop()
+  }
+})
+
 function updatedist(){
     document.getElementById("distance").innerHTML = document.getElementById("distancerange").value + "%";
 }
@@ -88,6 +94,10 @@ function startStop(){
 
 function zooming(e) {
     d3.select("svg g").attr("transform", e.transform);
+    var scale = e.transform["k"];
+    console.log(scale);
+    var zoom = (Math.floor(scale*100).toString())+"%"
+    document.getElementById("zoom").innerHTML = zoom;
 }
 
 function lightToDark(){
@@ -180,5 +190,7 @@ const fileUrl = 'paramaters.html' // provide file location
 fetch(fileUrl)
 .then( r => r.text() )
 .then( t => document.getElementById("parameters").innerHTML = t )
+
+
 
 

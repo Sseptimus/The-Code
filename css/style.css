@@ -88,6 +88,12 @@ body{
     transform: scale(1.05)
 }
 
+#zoom{
+    color: grey;
+    position: absolute;
+    bottom: 2%;
+    right: 45%;
+}
 
 #alpha, #beta, #gamma, #delta, .mask, .travel, .border, .distance, .vaccination {
     filter: hue-rotate(320deg);
