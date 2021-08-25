@@ -77,18 +77,10 @@ body{
 
 
 #graph{
-    position: relative;
-    left: 10%;
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
-    bottom: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    height: 50%;
-    width: 50%;
-    
+    outline: 2px solid black;
 }
 
 #startSim:hover{
@@ -280,3 +272,4 @@ opacity: 1;
         transform : translateX(0%)
     }
 }
+

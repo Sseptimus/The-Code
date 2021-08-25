@@ -1,5 +1,11 @@
 var g = Snap("#graph")
 
+var triangle4 = s.polygon([1,1, 1,9, 7,5])
+var square4 = [6,1, 7,9, 7,1]
+triangle4.attr("fill", "transparent");
+triangle4.attr("stroke-width","0.5")
+triangle4.attr("stroke","black")
+
 console.log("drawing graph")
 var linetop = g.line([0,0, 100,0])
 linetop.attr("stroke-width","0.1")
