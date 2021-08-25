@@ -38,9 +38,32 @@ body{
     float: bottom; 
     bottom: 5%;
     margin-left: 5%;
+    height: 7%;
+    width: 7%;
 }
 #startSim{
-    background-color: rgb(255, 115, 0);
+    background-color: rgba(180, 218, 157, 0);
+    height: 100%;
+    width: 100%;
+    border-radius: 2vh;
+    border: 2px black solid;
+}
+
+
+
+#svgStartIcon{
+    position: relative;
+    left: 10%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    bottom: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    height: 100%;
+    width: 100%;
+    
 }
 
 #startSim:hover{
@@ -48,10 +71,6 @@ body{
     transform: scale(1.1)
 }
 
-#speedArrow{
-    transform: translate(17);
-    transform: translatex(150px);
-}
 
 #alpha, #beta, #gamma, #delta, .mask, .travel, .border, .distance, .vaccination {
     filter: hue-rotate(320deg);
@@ -150,20 +169,6 @@ body{
 }
 #distancerange,#vacrange{
     width: 50%;
-}
-
-#progressbar{
-    display: none;
-}
-#deadbar{
-    color: #660000;
-
-}
-#sickbar{
-    color: rgb(87, 202, 195);
-}
-#alivebar{
-    color: white;
 }
 
 #alivepeople{
@@ -274,5 +279,37 @@ opacity: 1;
         transform : translateX(150%)
     }to{
         transform : translateX(0%)
+    }
+}
+
+@keyframes toPauseTRI1 {
+    from{
+        points: 1,1 1,9 7,5
+    }to{
+        points: 1,1 1,9 2,9
+    }
+}
+
+@keyframes toPauseTRI2 {
+    from{
+        points: 1,1 1,9 7,5
+    }to{
+        points: 1,1 2,9 2,1
+    }
+}
+
+@keyframes toPauseTRI3 {
+    from{
+        points: 1,1 1,9 7,5
+    }to{
+        points: 6,1 6,9 7,9
+    }
+}
+
+@keyframes toPauseTRI4 {
+    from{
+        points: 1,1 1,9 7,5
+    }to{
+        points: 6,1 7,9 7,1
     }
 }
