@@ -76,6 +76,14 @@ body{
 }
 
 
+#px2km{
+    position: absolute;
+    color: grey;
+    width: 100px;
+    left: 5%;
+    box-shadow: 0 2px 0 #000 inset;
+}
+
 #graph{
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
