@@ -45,4 +45,6 @@ function animatePause(){
 <polygon id="triangle3" points="1,1 1,9 7,5" style="fill:transparent;stroke:transparent;stroke-width:.1" />
 <polygon id="triangle4" points="1,1 1,9 7,5" style="fill:transparent;stroke:transparent;stroke-width:.1" />
 
+524 30 - 330 572 = 1500km
+574.34px = 1500km
 */

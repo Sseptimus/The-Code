@@ -97,7 +97,7 @@ function zooming(e) {
     var scale = e.transform["k"];
     console.log(scale);
     var zoom = (Math.floor(scale*100).toString())+"%"
-    document.getElementById("zoom").innerHTML = zoom;
+    document.getElementById("zoom").innerHTML = zoom    ;
 }
 
 function lightToDark(){
