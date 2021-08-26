@@ -79,6 +79,7 @@ function clicking(id) {
 
 var runningSim = false
 function startStop(){
+    sudoSim()
         console.log("start/stop");
         if (runningSim){
             runningSim = false;
@@ -164,8 +165,8 @@ if (isMobile) {// tests of the website is in mobile
 
 var popultion = 1400000 
 
-var dead = 300000
-var sick = 700000
+var dead = 0
+var sick = 0
 var alive = population - dead - sick
 
 
@@ -193,7 +194,6 @@ const fileUrl = 'paramaters.html' // provide file location
 fetch(fileUrl)
 .then( r => r.text() )
 .then( t => document.getElementById("parameters").innerHTML = t )
-
 
 
 

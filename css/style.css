@@ -108,7 +108,26 @@ body{
     margin-left: 10%;
 }
 
-#strainTitle{
+#deadbar{
+    width: 20%;
+    background-color: #380808;
+    border-radius: 0.5vh;
+    margin-bottom: 5px;
+}
+#sickbar{
+    width: 30%;
+    background-color: rgba(0, 0, 255, 0.185);
+    border-radius: 0.5vh;
+    margin-bottom: 5px;
+}
+#alivebar{
+    width: 50%;
+    background-color: #1c94113a;
+    border-radius: 0.5vh;
+    margin-bottom: 5px;
+}
+
+#strainTitle, #Title{
     padding-left: 10%;
     padding-top: 5px;
     margin-bottom: 10px;
@@ -176,15 +195,7 @@ body{
     width: 50%;
 }
 
-#alivepeople{
-    color: white;
-}
-#sickpeople{
-    color: blue;
-}
-#deadpeople{
-    color: red;
-}
+
 
 #statButton{
     background-color: rgb(58, 49, 49);

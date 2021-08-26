@@ -30,3 +30,5 @@ class RegionState{
         this.immune = 0;
     }
 }
+
+
