@@ -79,7 +79,6 @@ function clicking(id) {
 
 var runningSim = false
 function startStop(){
-    sudoSim()
         console.log("start/stop");
         if (runningSim){
             runningSim = false;
