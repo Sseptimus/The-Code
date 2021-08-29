@@ -72,8 +72,6 @@
                 d3.select("svg").selectAll("path").each(function() {
                     let element = d3.select(this);
                     let name = element.attr("name")
-                    console.log(name);
-                    console.log("Popultion:", populationsOfRegions[name])
                     toggled[name] = false;
                     element.on("click", () => {
                         console.log("Clicked " + name)
