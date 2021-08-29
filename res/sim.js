@@ -17,7 +17,8 @@ const populationsOfRegions = {
     "West Coast" : 32400,
     "Canterbury" : 645900,
     "Otago" : 245300,
-    "Southland" : 102600
+    "Southland" : 102600,
+    "World":7895000000
 }
 
 const strains = {
@@ -123,3 +124,5 @@ class SimulationState{
         Object.entries(this.regions).forEach(entry => {entry[1].timestep();});
     }
 }
+
+

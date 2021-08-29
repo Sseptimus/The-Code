@@ -1,5 +1,5 @@
 body{
-    background-color: #a6bddb;
+    background-color: #2f3336;
 }
 
 .wrapper{
@@ -10,60 +10,291 @@ body{
     "main options1";
     background-color: black;
 
+
 }
-.main,.options1{
-    background-color: #a6bddb;
+.main{
+    background-color: #2f3336;
+}
+
+.stats, .Stats{
+    margin-left: 10%;
 }
 
 .options1{
-    width: 33.3vw;
-    height: 99.5vh;
+
+    width: 40vw;
+    height: 95.5vh;
     float: right;
-    box-shadow: 0 0 10px 10px #a6bddb;
-    color:white;
+    color: grey;
+    outline: 2px solid black;
+    background-color: #282b2e;
+    padding-top: 5%;
+    font-family: 'Lato', sans-serif;
+    
 }
+
+.simCtrl{
+    position: absolute;
+    float: bottom; 
+    bottom: 5%;
+    margin-left: 5%;
+    height: 7%;
+    width: 7%;
+}
+#startSim{
+    background-color: #202020;
+    height: 100%;
+    width: 100%;
+    border-radius: 2vh;
+    border: 2px black solid;
+}
+
+.displaySetings{
+    margin-left: 10%;
+    margin-bottom: 5%;
+}
+
+#selectSpeed{
+    background-color: #202020;
+    color: grey;
+    border: 2px black solid;
+}
+
+#svgStartIcon{
+    position: relative;
+    left: 10%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    bottom: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    height: 100%;
+    width: 100%;
+    
+}
+
+
+#px2km{
+    position: absolute;
+    color: grey;
+    width: 100px;
+    left: 5%;
+    box-shadow: 0 2px 0 #000 inset;
+}
+
+#graph{
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    outline: 2px solid black;
+}
+
+#startSim:hover{
+    transition: all .2s ease-in-out;
+    transform: scale(1.05)
+}
+
+#zoom{
+    color: grey;
+    position: absolute;
+    bottom: 2%;
+    right: 45%;
+}
+
+#alpha, #beta, #gamma, #delta, .mask, .travel, .border, .distance, .vaccination {
+    filter: hue-rotate(320deg);
+    margin-left: 10%;
+}
+
+#deadbar{
+    width: 20%;
+    background-color: #380808;
+    border-radius: 0.5vh;
+    margin-bottom: 5px;
+}
+#sickbar{
+    width: 30%;
+    background-color: rgba(0, 0, 255, 0.185);
+    border-radius: 0.5vh;
+    margin-bottom: 5px;
+}
+#alivebar{
+    width: 50%;
+    background-color: #1c94113a;
+    border-radius: 0.5vh;
+    margin-bottom: 5px;
+}
+
+#strainTitle, #Title{
+    padding-left: 10%;
+    padding-top: 5px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(32, 32, 32);
+    outline: 2px solid black;
+}
+
+#title{
+    color: green;
+    margin-left: 10%;
+}
+
 .main object{
     float: left;
 }
 .main{
     float:left;
+    
 }
 
 .parameter{
     margin-bottom: 1em;
+    
 }
+
+
+
+
+
+#coolButtonIcon:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.1);
+
+}
+
+
+
+#lightVsDark {
+
+    padding: 5px;
+    color: grey;
+    background-color: #202020;
+    outline: 1px black solid;
+    border: 1px black solid;
+    
+}
+
 
 #strains{
     display: none;
 }
 #nzmap path:hover{
-    fill: gray;
+    fill:#6a64d5;
+    transform: scale(0.99);
+    transition: all .2s ease-in-out;
+    
 }
 #nzmap path[selected="yes"]:hover{
-    fill: orange;
+    fill: #fda7b6;
+    transition: all .2s ease-in-out;
+
 }
 #distancerange,#vacrange{
     width: 50%;
 }
-/*.parameters{
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-areas: 
-    "distance idistance",
-    "vaccination ivac",
-    "mask imask",
-    "travel itravel",
-    "strain istrain";
-    grid-template-rows: auto;
-    width: max-content;
-}
-.text{
-    width:max-content;
-    line-height: 155%;
-}
-.input{
-    width:min-content;
-    float:left;
+
+
+
+#statButton{
+    background-color: rgb(58, 49, 49);
+    font-size: 24px;
+    border: none;
+    color: orange;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    position: absolute; 
+    right: 5%;
+
+
 }
 
+#statButton:hover{
+    transition: all .2s ease-in-out;
+    transform: scale(1.1)
+}
+
+
+#distancerange,#vacrange{
+    vertical-align:-5px;
+}
+svg{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+
+
+@keyframes fadeout{
+    from{
+opacity: 1;
+    }to{
+opacity: 0;
+    }
+}
+
+@keyframes fadein{
+    from{
+opacity: 0;
+    }to{
+opacity: 1;
+    }
+}
+
+
+@keyframes fadeout2{
+    from{
+opacity: 1;
+    }to{
+opacity: 0;
+    }
+}
+
+@keyframes fadein2{
+    from{
+opacity: 0;
+    }to{
+opacity: 1;
+    }
+}
+
+
+@keyframes fadeout3{
+    from{
+opacity: 1;
+    }to{
+opacity: 0;
+    }
+}
+
+@keyframes fadein3{
+    from{
+opacity: 0;
+    }to{
+opacity: 1;
+    }
+}
+
+
+@keyframes leftToRight {
+    0% {
+        transform : translateX(0%)
+    }100%{
+        transform : translateX(150%)
+    }
+}
+
+
+@keyframes rightToLeft {
+    from {
+        transform : translateX(150%)
+    }to{
+        transform : translateX(0%)
+    }
+}
 
