@@ -4,58 +4,18 @@
 
 function loaded() {
   document.getElementById("stats").style.display = "none";
+  state = 1
 }
 
 function switchToStats() {
     if (state == 1){
-
-
-        document.getElementById("progressbar").style.width = "10%;";
-        document.getElementById("progressbar").style.height = "5%";
-        var deadprogress = ((population/dead)*100).toString()+"%";
-        var aliveprogress = ((population/alive)*100).toString()+"%";
-        var sickprogress = ((population/sick)*100).toString()+"%";
-        document.getElementById("deadbar").style.width = deadprogress;
-        document.getElementById("alivebar").style.width = aliveprogress;
-        document.getElementById("sickbar").style.width = sickprogress;
+        state = 0
+        document.getElementById("stats").style.display = "block"
+        document.getElementById("parameters").style.display = "none"
     }else{
-        document.getElementById("progressbar").style.width = "0px;";
-        document.getElementById("deadbar").style.width = "0px;";
-        document.getElementById("alivebar").style.width = "0px;";
-        document.getElementById("sickbar").style.width = "0px;";
-    }
-  if (state == 0) {
-        state = 1;
-        const fileUrl = 'stats.html' // provide file location
-        fetch(fileUrl)
-        .then( r => r.text() )
-        .then( t => document.getElementById("parameters").innerHTML = t )
-        console.log("pressed button");
-        document.getElementById("statButton").innerHTML = "Paramaters";
-        document.getElementById("stats").style.display = "grid";
-        if (eyepain == "none"){
-            document.getElementById("options1").style.color = "orange";
-            document.getElementById("statButton").style.color = "green";
-            document.getElementById("parameters").style.color = "grey";
-            
-        }
-  }else{
-        state = 0;
-        const fileUrl = 'paramaters.html' // provide file location
-        fetch(fileUrl)
-        .then( r => r.text() )
-        .then( t => document.getElementById("parameters").innerHTML = t )
-        document.getElementById("parameters").style.display = "grid";
-        document.getElementById("stats").style.display = "none";
-        document.getElementById("statButton").innerHTML = "Stats";
-        document.getElementById("region").innerHTML = "Region";
-        document.getElementById("population").innerHTML = "Undefinded Inhabitants";
-        if (eyepain == "none"){
-            document.getElementById("options1").style.color = "rgb(58, 179, 166)";
-            document.getElementById("statButton").style.color = "orange";
-            document.getElementById("options1").style.color = "rgb(58, 179, 166)";
-            document.getElementById("parameters").style.color = "grey";
-        }
+        state = 1
+        document.getElementById("stats").style.display = "none"
+        document.getElementById("parameters").style.display = "block"
     }
 }
 
@@ -186,13 +146,3 @@ d3.select("svg")
         document.getElementById("population").innerHTML = populationsOfRegions[name] + " Inhabitants";
     });
 });
-
-
-
-const fileUrl = 'paramaters.html' // provide file location
-fetch(fileUrl)
-.then( r => r.text() )
-.then( t => document.getElementById("parameters").innerHTML = t )
-
-
-

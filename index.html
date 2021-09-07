@@ -61,17 +61,85 @@
             <div class = "stats" id = "stats">
                 <h1 id="region">Undefined</h1>
                 <p id="population">Undefined Inhabitants</p>
-            </div>
-            <div id = "progressbar">
-            <div id = "deadbar"></div>
-            <div id = "sickbar"></div>
-            <div id = "alivebar"></div>
-            <style href="res\css-circle\css\circle.css"></style>
-            <span class=".c100.p56 .bar"></span>
+                <div id = "progressbar">
+                    <div id = "deadbar"></div>
+                    <div id = "sickbar"></div>
+                    <div id = "alivebar"></div>
+                    <style href="res\css-circle\css\circle.css"></style>
+                    <span class=".c100.p56 .bar"></span>
+                </div>
             </div>
             <div class = "parameters", id = "parameters">
-                <br>
+                <h1 id = "title">Parameters</h1>
+                <div id="strainTitle"><label>Regulations</label><br></div>
+                <div class = "Regulations">
+                <div class="distance">
+                    <input id ="distancerange" type="range" min="0" max="100" value="0" oninput="updatedist()">
+                    <label>Social Distancing:</label>
+                    <label id=distance>0%</label>
+                </div>
                 
+                <div class ="vaccination">
+                    <input id ="vacrange" type="range" min="0" max="100" value="0" oninput="updatevac()">
+                    <label>Vaccination:</label>
+                    <label id="vac">0%</label>
+                </div>
+                <br>
+                <div class = "mask">
+                    <input type="checkbox", id = "maskBox">
+                    <label>Mask Wearing</label>
+                </div>
+                <div class="travel">
+                    <input type="checkbox">
+                    <label>Travel Restriction</label>
+                </div>
+                <div class="border">
+                    <input type="checkbox">
+                    <label>Border Restriction</label>
+                </div>
+                </div>
+                <br>
+                <div id="strainTitle"><label>Display setings</label><br></div>
+                <div class = "displaySetings">
+                        <div class="simSpeed" style="width:200px;">
+                            Simulation speed &nbsp;<select id="selectSpeed">
+                              <option value="1">1x</option>
+                              <option value="2">2x</option>
+                              <option value="3">5x</option>
+                              <option value="4">10x</option>
+                              <option value="5">100x</option>
+                            </select>
+                      </div>
+                      <br>
+                      <button id = "lightVsDark", onClick = lightToDark()>Mode: Dark</button>
+                </div>
+                <div class="strain">
+                    <div id="strainTitle"><label>Covid Strain:</label><br></div>
+                    
+                    <label>
+                        <input type="radio" id="alpha" name="radiostrain">
+                        Alpha
+                    </label>
+                    <br>
+                    
+                    <label>
+                        <input type="radio" id="beta" name="radiostrain">
+                        Beta
+                    </label><br>
+                    
+                    <label>
+                        <input type="radio" id="gamma" name="radiostrain">
+                        Gamma
+                    </label><br>
+                    
+                    <label>
+                        <input type="radio" id="delta" name="radiostrain">
+                        Delta
+                    </label><br>
+
+                    
+                </div>
+
             </div>
             <div class = "simCtrl">
                 <button id = "startSim" onclick=startStop()>
