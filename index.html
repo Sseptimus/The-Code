@@ -62,11 +62,20 @@
                 <h1 id="region">Undefined</h1>
                 <p id="population">Undefined Inhabitants</p>
                 <div id = "progressbar">
-                    <div id = "deadbar"></div>
-                    <div id = "sickbar"></div>
-                    <div id = "alivebar"></div>
-                    <style href="res\css-circle\css\circle.css"></style>
-                    <span class=".c100.p56 .bar"></span>
+                    <label for="susLabel" id = "susLabel">0 Susceptible</label>
+                    <progress id = "susProgress" value = 0 max = 100></progress>
+                    <br/>
+                    <label id = "undiscoveredLabel" for="undiscoveredProgress">No undiscovered</label>
+                    <progress id = "undiscoveredProgress" value = 0 max = 100></progress>
+                    <br/>
+                    <label id = "casesLabel" for="casesProgress">No cases</label>
+                    <progress id = "casesProgress" value = 0 max = 100></progress>
+                    <br/>
+                    <label id = "hospitalLabel" for="hospitalProgress">No hospital</label>
+                    <progress id = "hospitalProgress" value = 0 max = 100></progress>
+                    <br/>
+                    <label id = "deadLabel" for="deadProgress">No deaths</label>
+                    <progress id = "deadProgress" value = 0 max = 100></progress>
                 </div>
             </div>
             <div class = "parameters", id = "parameters">

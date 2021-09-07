@@ -1,10 +1,37 @@
 //functions 
+var selectedRegion = "none";
 
-
+var regionNameElement;
+var regionPopulationElement;
+var deadLabelElement;
+var deadProgressElement;
+var susceptibleLabelElement;
+var susceptibleProgressElement;
+var undiscoveredLabelElement;
+var undiscoveredProgressElement;
+var caseLabelElement;
+var caseProgressElement;
+var hospitalisedLabelElement;
+var hospitalisedProgressElement;
 
 function loaded() {
   document.getElementById("stats").style.display = "none";
   state = 1
+
+  regionNameElement = document.getElementById("region")
+  regionPopulationElement = document.getElementById("population")
+  deadLabelElement = document.getElementById("deadLabel")
+  deadProgressElement = document.getElementById("deadProgress")
+  susceptibleProgressElement = document.getElementById("susProgress")
+  susceptibleLabelElement = document.getElementById("susLabel")
+  undiscoveredProgressElement = document.getElementById("undiscoveredProgress")
+  undiscoveredLabelElement = document.getElementById("undiscoveredLabel")
+  caseLabelElement = document.getElementById("casesLabel")
+  caseProgressElement = document.getElementById("casesProgress")
+  hospitalisedLabelElement = document.getElementById("hospitalLabel")
+  hospitalisedProgressElement = document.getElementById("hospitalProgress")
+
+  console.log(undiscoveredProgressElement)
 }
 
 function switchToStats() {
@@ -142,7 +169,30 @@ d3.select("svg")
     console.log(name);
     console.log("Popultion:", populationsOfRegions[name]);
     element.on("click", () => {
-        document.getElementById("region").innerHTML = name;
-        document.getElementById("population").innerHTML = populationsOfRegions[name] + " Inhabitants";
+        selectedRegion = name;
+        showStatsOfRegion(selectedRegion)
     });
 });
+
+function showStatsOfRegion(regionName){
+    regionState = globalState.getRegion(regionName);
+
+    regionNameElement.innerHTML = regionName
+    regionPopulationElement.innerHTML = regionState.totalSize + " Inhabitants";
+
+    const healthyPeople = regionState.susceptible + regionState.immune + regionState.exposed;
+    susceptibleLabelElement.innerHTML = healthyPeople + " Healthy People"
+    susceptibleProgressElement.value = healthyPeople / regionState.totalSize * 100;
+
+    undiscoveredLabelElement.innerHTML = regionState.symptomatic + " Unknown Cases"
+    undiscoveredProgressElement.value = regionState.symptomatic / regionState.totalSize * 100
+
+    deadLabelElement.innerHTML = regionState.dead + " Dead "
+    deadProgressElement.value = regionState.dead / regionState.totalSize * 100;
+
+    caseProgressElement.value = regionState.found / regionState.totalSize * 100
+    caseLabelElement.innerHTML = regionState.found + " Cases Found"
+
+    hospitalisedProgressElement.value = regionState.hospitalised / regionState.totalSize * 100;
+    hospitalisedLabelElement.innerHTML = regionState.hospitalised + " Hospitalised"
+}

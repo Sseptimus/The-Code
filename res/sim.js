@@ -123,6 +123,10 @@ class SimulationState{
     timestep(){
         Object.entries(this.regions).forEach(entry => {entry[1].timestep();});
     }
+
+    getRegion(name){
+        return this.regions[name]
+    }
 }
 
-
+var globalState = new SimulationState();
