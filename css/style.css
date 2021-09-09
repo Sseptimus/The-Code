@@ -103,7 +103,7 @@ body{
     right: 45%;
 }
 
-#alpha, #beta, #gamma, #delta, .mask, .travel, .border, .distance, .vaccination {
+#alpha, #beta, #gamma, #delta, #original, .mask, .travel, .border, .distance, .vaccination {
     filter: hue-rotate(320deg);
     margin-left: 10%;
 }

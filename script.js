@@ -1,5 +1,5 @@
 //functions 
-var selectedRegion = "none";
+var selectedRegion = "New Zealand";
 
 var regionNameElement;
 var regionPopulationElement;
@@ -35,12 +35,20 @@ function loaded() {
 }
 
 function switchToStats() {
+    let stats = document.getElementById("statButton")
+
     if (state == 1){
         state = 0
+        stats.innerHTML = "Params"
+        stats.style.color = "green"
+
         document.getElementById("stats").style.display = "block"
         document.getElementById("parameters").style.display = "none"
     }else{
         state = 1
+        stats.innerHTML = "Stats"
+        stats.style.color = "orange"
+
         document.getElementById("stats").style.display = "none"
         document.getElementById("parameters").style.display = "block"
     }
@@ -149,12 +157,6 @@ if (isMobile) {// tests of the website is in mobile
         console.log("other");
 }
 
-var popultion = 1400000 
-
-var dead = 0
-var sick = 0
-var alive = population - dead - sick
-
 
 
 d3.select("svg").call(zoom);
@@ -173,6 +175,11 @@ d3.select("svg")
         showStatsOfRegion(selectedRegion)
     });
 });
+
+function timestep(){
+    globalState.timestep()
+    showStatsOfRegion(selectedRegion);
+}
 
 function showStatsOfRegion(regionName){
     regionState = globalState.getRegion(regionName);

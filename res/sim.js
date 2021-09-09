@@ -18,15 +18,21 @@ const populationsOfRegions = {
     "Canterbury" : 645900,
     "Otago" : 245300,
     "Southland" : 102600,
-    "World":7895000000
+    //"World":7895000000
 }
 
 const strains = {
     "original" : {"R" : 2.5, "hospitalisation" : 0.0243, "death" : 0.0066},
     "alpha" : {"R" : 3.225, "hospitalisation" : 0.03, "death" : 0.01},
+    "beta" : {"R" : 3.125, "hospitalisation" : 0.03, "death" : 0.01},
     "gamma" : {"R" : 3.125, "hospitalisation" : 0.0347, "death" : 0.0099},
     "delta" : {"R" : 4.925, "hospitalisation" : 0.06845, "death" : 0.015642}
 }
+
+var currentR = 2.5; //Will be calculated from parameters
+var currentDeathRate = 0.0066;
+var currentHospitalisationRate = 0.0243;
+var currentFindingRate = 0.01;
 
 function randint(upper, lower){
     return Math.floor(Math.random() * (upper - lower) + lower);
@@ -43,6 +49,32 @@ function binomial(n, p){ //Aproxximated by a gaussian bell curve
 
 function choose(list){
     return list[randint(0, list.length)];
+}
+
+function recalculateSimParams(){
+    const rbs = document.querySelectorAll('input[name="radiostrain"]')
+    let selected
+    for(const rb of rbs){
+        if(rb.checked){
+            selected = rb;
+            break;
+        }
+    }
+    const strain = strains[selected.id];
+    let R = strain.R
+    let HR = strain.hospitalisation
+    let DR = strain.death
+
+    let distancing = document.getElementById("distancerange").value;
+    R *= (1 - 0.006 * distancing)
+
+    if(document.getElementById("maskBox").checked){
+        R *= 0.7
+    }
+
+    currentR = R;
+    currentHospitalisationRate = HR;
+    currentDeathRate = DR;
 }
 
 class RegionState{
@@ -67,16 +99,12 @@ class RegionState{
     }
 
     timestep(){
-        console.log("Called timestep! (", this.name, ")")
-
-        const currentR = 2.5; //Will be calculated from parameters
-        const currentDeathRate = 0.0066;
-        const currentHospitalisationRate = 0.0243;
-        const currentFindingRate = 0.01;
-
         //Calculate changes
-        const newExposed = binomial(this.symptomatic, currentR / (SYMPTOM_LENGTH + 1) * this.symptomatic / this.totalSize);
+        const newExposed = binomial(this.susceptible, currentR / (SYMPTOM_LENGTH + 1) * this.symptomatic / this.totalSize);
         const newInfectuous = binomial(this.exposed, 1 / (ASYMPTOMATIC_PERIOD + 1))
+        if(this.exposed > 0){
+            console.log(this.name +": " + newExposed + " new infections")
+        }
         const newFound = binomial(this.symptomatic, currentFindingRate)
         const newHospitalised = binomial(this.found, currentHospitalisationRate / (SYMPTOM_LENGTH + 1))
 
@@ -125,7 +153,37 @@ class SimulationState{
     }
 
     getRegion(name){
+        if(name == "New Zealand"){
+            return this.totalStats();
+        }
         return this.regions[name]
+    }
+
+    totalStats(){
+        let stats = {
+            name : "New Zealand",
+            totalSize : 0,
+            susceptible : 0,
+            immune : 0,
+            exposed : 0,
+            symptomatic : 0,
+            dead : 0,
+            found : 0,
+            hospitalised : 0,
+        }
+        Object.entries(this.regions).forEach(entry => {
+            let region = entry[1];
+            stats.totalSize += region.totalSize;
+            stats.susceptible += region.susceptible;
+            stats.immune += region.immune;
+            stats.exposed += region.exposed;
+            stats.symptomatic += region.symptomatic;
+            stats.dead += region.dead;
+            stats.found += stats.found;
+            stats.hospitalised += region.hospitalised;
+        })
+
+        return stats;
     }
 }
 

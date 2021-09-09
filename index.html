@@ -78,7 +78,7 @@
                     <progress id = "deadProgress" value = 0 max = 100></progress>
                 </div>
             </div>
-            <div class = "parameters", id = "parameters">
+            <div class = "parameters", id = "parameters" onchange="recalculateSimParams()">
                 <h1 id = "title">Parameters</h1>
                 <div id="strainTitle"><label>Regulations</label><br></div>
                 <div class = "Regulations">
@@ -102,10 +102,6 @@
                     <input type="checkbox">
                     <label>Travel Restriction</label>
                 </div>
-                <div class="border">
-                    <input type="checkbox">
-                    <label>Border Restriction</label>
-                </div>
                 </div>
                 <br>
                 <div id="strainTitle"><label>Display setings</label><br></div>
@@ -124,7 +120,11 @@
                 </div>
                 <div class="strain">
                     <div id="strainTitle"><label>Covid Strain:</label><br></div>
-                    
+                    <label>
+                        <input type="radio" id="original" name="radiostrain" checked>
+                        Original
+                    </label>
+                    <br>
                     <label>
                         <input type="radio" id="alpha" name="radiostrain">
                         Alpha
