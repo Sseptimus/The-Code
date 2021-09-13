@@ -13,6 +13,8 @@ var caseLabelElement;
 var caseProgressElement;
 var hospitalisedLabelElement;
 var hospitalisedProgressElement;
+var recProgressElement;
+var recLabelElement;
 
 function loaded() {
   document.getElementById("stats").style.display = "none";
@@ -30,8 +32,13 @@ function loaded() {
   caseProgressElement = document.getElementById("casesProgress")
   hospitalisedLabelElement = document.getElementById("hospitalLabel")
   hospitalisedProgressElement = document.getElementById("hospitalProgress")
+  recLabelElement = document.getElementById("recoveredLabel")
+  recProgressElement = document.getElementById("recoveredProgress")
 
-  console.log(undiscoveredProgressElement)
+  showStatsOfRegion(selectedRegion);
+  recalculateSimParams();
+
+  recolorRegions()
 }
 
 function switchToStats() {
@@ -83,7 +90,6 @@ function startStop(){
         }else{
             runningSim = true
             animatePause()
-
         }
 }
 
@@ -94,8 +100,25 @@ function zooming(e) {
     document.getElementById("zoom").innerHTML = zoom;
     //524 30 - 330 572 = 1500km
     //574.34px = 1500km
-    var kmToPx = (575.34/1500)*scale
-    document.getElementById("px2km").innerHTML = Math.floor(((575.34/1500)*scale)*100).toString()+"Km";
+    console.log(scale)
+    var kmToPx = (575.34/1500)/scale
+    document.getElementById("px2km").innerHTML = Math.floor((kmToPx)*100).toString()+"Km";
+}
+
+function rgb(r, g, b){
+    return "rgb("+Math.round(r)+","+Math.round(g)+","+Math.round(b)+")"
+}
+
+function recolorRegions(){
+    const regions = document.querySelectorAll("path");
+    for(region of regions){
+        regionState = globalState.getRegion(region.getAttribute("name"));
+
+        let redRate = (regionState.totalSize - regionState.susceptible) / regionState.totalSize;
+        redRate = (Math.log(redRate + 0.01) - Math.log(0.01)) / (Math.log(1.01) - Math.log(0.01))
+
+        region.setAttribute("fill", rgb(255 * redRate, 30, 30))
+    }
 }
 
 function lightToDark(){
@@ -179,6 +202,7 @@ d3.select("svg")
 function timestep(){
     globalState.timestep()
     showStatsOfRegion(selectedRegion);
+    recolorRegions();
 }
 
 function showStatsOfRegion(regionName){
@@ -187,7 +211,7 @@ function showStatsOfRegion(regionName){
     regionNameElement.innerHTML = regionName
     regionPopulationElement.innerHTML = regionState.totalSize + " Inhabitants";
 
-    const healthyPeople = regionState.susceptible + regionState.immune + regionState.exposed;
+    const healthyPeople = regionState.susceptible + regionState.exposed;
     susceptibleLabelElement.innerHTML = healthyPeople + " Healthy People"
     susceptibleProgressElement.value = healthyPeople / regionState.totalSize * 100;
 
@@ -202,4 +226,7 @@ function showStatsOfRegion(regionName){
 
     hospitalisedProgressElement.value = regionState.hospitalised / regionState.totalSize * 100;
     hospitalisedLabelElement.innerHTML = regionState.hospitalised + " Hospitalised"
+
+    recLabelElement.innerHTML = regionState.immune + " Recovered"
+    recProgressElement.value = regionState.immune / regionState.totalSize * 100;
 }

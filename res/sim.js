@@ -44,7 +44,16 @@ function binomial(n, p){ //Aproxximated by a gaussian bell curve
     var u =0, v = 0;
     while (u === 0) u = Math.random();
     while(v === 0) v = Math.random();
-    return Math.max(0, Math.round(Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v) * sigma + mu));
+    return Math.max(0, randomRound(Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v) * sigma + mu));
+}
+
+//0.25 has a 1/4 chance of becoming 1 and a 3/4 chance of becoming 0
+function randomRound(n){
+    if(Math.random() < (n % 1)){
+        return Math.ceil(n)
+    }else{
+        return Math.floor(n)
+    }
 }
 
 function choose(list){
@@ -67,6 +76,9 @@ function recalculateSimParams(){
 
     let distancing = document.getElementById("distancerange").value;
     R *= (1 - 0.006 * distancing)
+
+    let vaccination = document.getElementById("vacrange").value;
+    R *= (1 - 0.006 * vaccination)
 
     if(document.getElementById("maskBox").checked){
         R *= 0.7
@@ -108,7 +120,7 @@ class RegionState{
         const newFound = binomial(this.symptomatic, currentFindingRate)
         const newHospitalised = binomial(this.found, currentHospitalisationRate / (SYMPTOM_LENGTH + 1))
 
-        const removalsFromHospitals = binomial(this.hospitalised, 1 / (SYMPTOM_LENGTH + 1))
+        const removalsFromHospitals = binomial(this.hospitalised, 2 / (SYMPTOM_LENGTH))
         const deathsFromHospital = binomial(removalsFromHospitals, currentDeathRate / currentHospitalisationRate)
         const recoveriesFromHospital = removalsFromHospitals - deathsFromHospital
 
