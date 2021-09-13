@@ -100,9 +100,8 @@ function zooming(e) {
     document.getElementById("zoom").innerHTML = zoom;
     //524 30 - 330 572 = 1500km
     //574.34px = 1500km
-    console.log(scale)
-    var kmToPx = (575.34/1500)/scale
-    document.getElementById("px2km").innerHTML = Math.floor((kmToPx)*100).toString()+"Km";
+    var kmToPx = (575.34/1500)*scale
+    document.getElementById("px2km").innerHTML = Math.floor((575.34/1500)*(10000/(scale*100))*10).toString()+"Km";
 }
 
 function rgb(r, g, b){
@@ -119,9 +118,6 @@ function recolorRegions(){
 
         region.setAttribute("fill", rgb(255 * redRate, 30, 30))
     }
-    var kmToPx = (575.34/1500)*scale
-
-    document.getElementById("px2km").innerHTML = Math.floor((575.34/1500)*(10000/(scale*100))*10).toString()+"Km";
 }
 
 function lightToDark(){
