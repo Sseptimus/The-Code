@@ -49,6 +49,8 @@ function binomial(n, p){ //Aproxximated by a gaussian bell curve
 
 //0.25 has a 1/4 chance of becoming 1 and a 3/4 chance of becoming 0
 function randomRound(n){
+    if(n < 0) return 
+
     if(Math.random() < (n % 1)){
         return Math.ceil(n)
     }else{
