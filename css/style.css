@@ -33,6 +33,10 @@ body{
     
 }
 
+.reset{
+    display: "none";
+}
+
 .simCtrl{
     position: absolute;
     float: bottom; 
