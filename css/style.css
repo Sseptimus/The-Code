@@ -98,6 +98,20 @@ body{
     
 }
 
+#resetButtonSvg{
+    position: relative;
+    left: 0%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    bottom: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    height: 100%;
+    width: 100%;
+    
+}
 
 #px2km{
     position: absolute;
