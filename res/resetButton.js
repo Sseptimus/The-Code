@@ -1,8 +1,14 @@
-var s3 = Snap("#resetButtonSvg")
+var s = Snap("#resetButtonSvg")
 
-var arrow = s3.text(0, 9.5, "↺");
+var arrow = s.text(0, 9.5, "↺");
 
 
 function spin() {
-    document.getElementById("resetButtonSvg").style.animation = "spin360 0.5s ease forwards";
+
+    var bbox = arrow.getBBox();
+
+
+    arrow.animate({ transform: "r360," + bbox.cx + ',' + bbox.cy }, 1000, mina.bounce);
+
+    //document.getElementById("resetButtonSvg").style.animation = "spin360 0.5s ease forwards";
 }

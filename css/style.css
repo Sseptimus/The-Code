@@ -1,5 +1,6 @@
 body{
     background-color: #2f3336;
+    overflow: hidden
 }
 
 .wrapper{
@@ -110,6 +111,7 @@ body{
     transform: translateY(-50%);
     height: 100%;
     width: 100%;
+    
     
 }
 
@@ -336,10 +338,15 @@ opacity: 1;
 }
 
 @keyframes spin360 { 
-    0% {
-        transform:rotate(0deg); 
+    
+    
+
+    from {
+        transform: rotate(0deg); 
+        transform-origin: center;
     }
-    100% { 
-        transform:rotate(-360deg); 
+    to { 
+        transform: rotate(-360deg);
+        transform-origin: center; 
     } 
 }
