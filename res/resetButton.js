@@ -8,7 +8,7 @@ function spin() {
     var bbox = arrow.getBBox();
 
 
-    arrow.animate({ transform: "r360," + bbox.cx + ',' + bbox.cy }, 1000, mina.bounce);
+    arrow.stop().animate({ transform: "r360," + bbox.cx + ',' + bbox.cy }, 1000, mina.bounce);
 
     //document.getElementById("resetButtonSvg").style.animation = "spin360 0.5s ease forwards";
 }
