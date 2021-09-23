@@ -14,7 +14,7 @@
 <img src="img\Covidsimwebsite.PNG" alt="Description for image" width = "50%" id = "image1">
 </div>
 </div>
-
+<br>
 <details>
   <summary id = "css">CSS is disabled in this preview</summary>
   <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
