@@ -16,11 +16,41 @@
 </div>
 <br>
 
-## usage
+## <span id="icon">&#10719;</span> Usage
 
+## <span id = "icon">&#128202;</span> Simulation metrics 
 
+### Strains
 
+```
+Incubation Period = 5.1 days
+Symptom Length = 7 days
 
+Original:
+    R0 = ~2.5
+    Death rate = 0.66%
+    Hospitalisation Rate = 2.43%
+
+Alpha:
+    R0 = 3.225
+    Death Rate = 1.05%
+    Hospitalisation Rate = 3.7%
+
+Beta: (Missing a lot of data about this one. DR and HR are inferred)
+    R0 = 3.125
+    DR = 1%
+    HR = 3%
+
+Gamma:
+    R0 = 3.45
+    DR = 0.99%
+    HR = 3.47%
+
+Delta:
+    R0 = 4.925
+    HR = 6.845%
+    DR = 0.015642%5
+```
 
 
 
@@ -39,7 +69,6 @@
 #description {
     font-family: 'Nunito';font-size: 20px;
 }
-
 #icon {
     color: orange;
 }
@@ -48,6 +77,10 @@
     border: 3px solid black
 }
 #image1:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.05)
+}
+#text-line {
     transition: all .2s ease-in-out;
     transform: scale(1.05)
 }
