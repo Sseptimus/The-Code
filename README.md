@@ -54,13 +54,14 @@ Delta:
 
 
 
-
+<sub>
 <details>
   <summary id = "css">CSS is disabled in this preview</summary>
   <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
 <style>
 #css{
     color: rgba(0,0,0,0.0);
+    display: none;
 }
 #underline {
     background-color: orange;
@@ -86,3 +87,4 @@ Delta:
 }
 </style>
 </details>
+</sub>
