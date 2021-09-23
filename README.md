@@ -15,6 +15,16 @@
 </div>
 </div>
 <br>
+
+## usage
+
+
+
+
+
+
+
+
 <details>
   <summary id = "css">CSS is disabled in this preview</summary>
   <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
@@ -29,12 +39,7 @@
 #description {
     font-family: 'Nunito';font-size: 20px;
 }
-#screenshots {
-    height: 10%;
-}
-#slideshow {
-    position: absolute;
-}
+
 #icon {
     color: orange;
 }
