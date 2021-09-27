@@ -17,7 +17,7 @@
             
             <div id = "popup">
             <button id="quit-messsage", onclick="document.getElementById(&#34;popup&#34;).style.display = &#34;none&#34;">x</button>
-            <p>Vaxenes are vital in the fight against Covid 19! Click <a id = "vax-link", href="https://app.bookmyvaccine.covid19.health.nz/">Here</a> to find out how to book one.</p>
+            <p>Vaccines are vital in the fight against Covid 19! Click <a id = "vax-link", href="https://app.bookmyvaccine.covid19.health.nz/">Here</a> to find out how to book one.</p>
             </div>
 
             
@@ -72,6 +72,7 @@
             <div class = "stats" id = "stats">
                 <h1 id="region">Undefined</h1>
                 <p id="population">Undefined Inhabitants</p>
+                <div id="strainTitle"><label>Population Stats</label><br></div>
                 <div id = "progressbar">
                 <div id = "box"></div>
                     <label for="susLabel" id = "susLabel">0 Susceptible</label>
@@ -92,6 +93,7 @@
                     <label id = "recoveredLabel" for="recoveredProgress">No recoveries</label>
                     <progress id = "recoveredProgress" value = 0 max = 100></progress>
                 </div>
+                <div id="strainTitle"><label>Virus stats</label><br></div>
             </div>
             <div class = "parameters", id = "parameters" onchange="recalculateSimParams()">
                 <h1 id = "title">Parameters</h1>

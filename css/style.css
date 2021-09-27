@@ -17,7 +17,19 @@ body{
 }
 
 .stats, .Stats{
-    margin-left: 10%;
+    margin-left: 0%;
+}
+
+#region, #population, #progressbar, #virusData {
+    padding-left: 10%;
+}
+
+#region {
+    color: orange;
+}
+
+#progressbar {
+    margin-bottom: 20px;
 }
 
 .options1{
@@ -328,6 +340,7 @@ svg{
     padding-left: 5px;
     bottom: 2%;
     z-index: -5;
+    font-family: 'Lato', sans-serif;
 }
 #quit-messsage {
     background-color: rgba(0, 0, 0, 0);
