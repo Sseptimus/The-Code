@@ -39,6 +39,7 @@ function loaded() {
   recalculateSimParams();
 
   recolorRegions()
+  document.getElementById("loader").style.animation = "drop 1s ease forwards";
 }
 
 function switchToStats() {
@@ -229,3 +230,17 @@ function showStatsOfRegion(regionName){
     recLabelElement.innerHTML = regionState.immune + " Recovered"
     recProgressElement.value = regionState.immune / regionState.totalSize * 100;
 }
+
+var box_height = document.getElementById("progressbar").clientHeight
+document.getElementById("box").style.height = box_height+"px";
+var box_width = document.getElementById("susProgress").clientWidth
+document.getElementById("box").style.width = box_width+3+"px";
+console.log("box dimentions",box_width , box_height)
+
+window.addEventListener('resize', function(event){
+ var box_height = document.getElementById("progressbar").clientHeight
+document.getElementById("box").style.height = box_height+"px";
+var box_width = document.getElementById("susProgress").clientWidth
+document.getElementById("box").style.width = box_width+3+"px";
+console.log("box dimentions",box_width , box_height)
+});

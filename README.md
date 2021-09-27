@@ -1,3 +1,5 @@
+
+
 # Covid Simulator
 <div id="underline"></div>
 
@@ -17,6 +19,7 @@
 <br>
 
 ## <span id="icon">&#10719;</span> Usage
+<p id = "description">well you can't use it its not finished but I will update this when it is finished</p>
 
 ## <span id = "icon">&#128202;</span> Simulation metrics 
 
@@ -85,6 +88,8 @@ Delta:
     transition: all .2s ease-in-out;
     transform: scale(1.05)
 }
+
 </style>
 </details>
 </sub>
+

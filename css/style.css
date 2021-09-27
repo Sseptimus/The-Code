@@ -6,7 +6,6 @@ body{
 .wrapper{
     display:grid;
     box-sizing: border-box;
-    
     grid-template-areas: 
     "main options1";
     background-color: black;
@@ -31,7 +30,52 @@ body{
     background-color: #282b2e;
     padding-top: 5%;
     font-family: 'Lato', sans-serif;
-    
+}
+
+.loader {
+    position: absolute;
+    background-color: #282b2e;
+    height: 100%;
+    width: 100%;
+    z-index: 99;
+    animation: drop 3s ease forwards;
+    text-align: center;
+}
+
+#nz {
+    color: orange;
+}
+
+#loading-title {
+    font-size: 4vw;
+}
+
+#loadingtext {
+    color: grey;
+    font-size: 2vw;
+}
+
+#progressbar {
+    width: 80%;
+    position: relative;
+    z-index: 1;
+}
+
+#susProgress, #undiscoveredProgress, #casesProgress, #hospitalProgress, #deadProgress, #recoveredProgress {
+    -webkit-appearance: none;
+    appearance: none;
+    float: right;
+    z-index: 1;
+    border-radius: 2vh;
+    border: 1px solid #ffffff;
+
+}
+
+#box {
+    position: absolute;
+    background-color: white;
+    right: 0;
+    z-index: -1;
 }
 
 .reset{
@@ -55,6 +99,12 @@ body{
 #resetButton:hover{
     transition: all .2s ease-in-out;
     transform: scale(1.05)
+}
+
+
+
+#progressbar {
+    color: grey;
 }
 
 .simCtrl{
@@ -114,6 +164,8 @@ body{
     
     
 }
+
+
 
 #px2km{
     position: absolute;
@@ -190,7 +242,6 @@ body{
 
 .parameter{
     margin-bottom: 1em;
-    
 }
 
 
@@ -350,3 +401,72 @@ opacity: 1;
         transform-origin: center; 
     } 
 }
+
+@keyframes drop {
+    0% {
+        bottom: 0%;
+    }50%{
+        bottom: 0%;
+    }100%{
+        bottom: -100%
+    }
+}
+
+/*copied free elips loader*/
+
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: grey;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
+  
