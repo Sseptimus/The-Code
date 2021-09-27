@@ -128,6 +128,9 @@ function recolorRegions(){
 function lightToDark(){
     if (eyepain == "none"){
         eyepain = "ungodly"
+        let root = document.documentElement;
+        root.style.setProperty('--background', " #CFD0D5");
+        root.style.setProperty('--grey-text', "black");
         document.getElementById("body").style.backgroundColor = "#2f3336;"
         document.getElementById("body").style.animation = "fadeout2 1s ease forwards"
         document.getElementById("main").style.backgroundColor = "#cfd0d5";
@@ -139,10 +142,14 @@ function lightToDark(){
         document.getElementById("statButton").style.backgroundColor = "#1b1d21";
         document.getElementById("statButton").style.color = "white";
         document.getElementById("nzmap").style.fill = "	#fdfdfd";
+        
         document.getElementById("body").style.animation = "fadein2 1s ease forwards"
 
     }else{
         eyepain = "none"
+        let root = document.documentElement;
+        root.style.setProperty('--background', "#202020");
+        root.style.setProperty('--grey-text', "grey");
         document.getElementById("body").style.backgroundColor = "rgb(58, 49, 49);"
         document.getElementById("body").style.animation = "fadeout3 1s ease forwards"
         document.getElementById("lightVsDark").innerHTML = "Mode: Dark";

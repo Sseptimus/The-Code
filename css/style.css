@@ -3,6 +3,12 @@ body{
     overflow: hidden
 }
 
+:root {
+    --background: #202020;
+    --grey-text: rgb(122, 122, 122);
+    --title-bg:
+}
+
 .wrapper{
     display:grid;
     box-sizing: border-box;
@@ -102,7 +108,7 @@ body{
 }
 
 #resetButton{
-    background-color: #202020;
+    background-color: var(--background);
     height: 100%;
     width: 100%;
     border-radius: 2vh;
@@ -129,7 +135,7 @@ body{
     width: 7%;
 }
 #startSim{
-    background-color: #202020;
+    background-color: var(--background);
     height: 100%;
     width: 100%;
     border-radius: 2vh;
@@ -142,8 +148,8 @@ body{
 }
 
 #selectSpeed{
-    background-color: #202020;
-    color: grey;
+    background-color: var(--background);
+    color: var(--grey-text);
     border: 2px black solid;
 }
 
@@ -182,7 +188,7 @@ body{
 
 #px2km{
     position: absolute;
-    color: grey;
+    color: var(--grey-text);
     width: 100px;
     left: 5%;
     box-shadow: 0 2px 0 #000 inset;
@@ -201,7 +207,7 @@ body{
 }
 
 #zoom{
-    color: grey;
+    color: var(--grey-text);
     position: absolute;
     bottom: 2%;
     right: 45%;
@@ -236,8 +242,9 @@ body{
     padding-top: 5px;
     margin-bottom: 10px;
     padding-bottom: 10px;
-    background-color: rgb(32, 32, 32);
+    background-color: var(--background);
     outline: 2px solid black;
+    color: var(--grey-text)
 }
 
 #title{
@@ -273,7 +280,7 @@ body{
 
     padding: 5px;
     color: grey;
-    background-color: #202020;
+    background-color: var(--background);
     outline: 1px black solid;
     border: 1px black solid;
     
@@ -333,18 +340,19 @@ svg{
 
 #popup {
     position: absolute;
-    background-color: #202020;
-    color: grey;
+    background-color: var(--background);
+    color: var(--grey-text);
     padding: 2px;
     padding-right: 7px;
     padding-left: 5px;
     bottom: 2%;
     z-index: -5;
     font-family: 'Lato', sans-serif;
+    outline: 2px solid black;
 }
 #quit-messsage {
     background-color: rgba(0, 0, 0, 0);
-    color: grey;
+    color: var(--grey-text);
     border: 0px solid;
     float: right;
 }
