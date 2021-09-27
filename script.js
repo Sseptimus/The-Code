@@ -244,6 +244,10 @@ function showStatsOfRegion(regionName){
     recProgressElement.value = regionState.immune / regionState.totalSize * 100;
 }
 
+
+
+
+
 lightToDark()
 
 var box_height = document.getElementById("progressbar").clientHeight
@@ -259,3 +263,22 @@ var box_width = document.getElementById("susProgress").clientWidth
 document.getElementById("box").style.width = box_width+3+"px";
 console.log("box dimentions",box_width , box_height)
 });
+
+var isKeyPressed = {
+    t: false, // ASCII code for 'a'
+    s: false // ASCII code for 'b'
+    // ... Other keys to check for custom key combinations
+  };
+
+
+document.onkeydown = keyDownEvent => {
+    //Prevent default key actions, if desired
+    keyDownEvent.preventDefault();
+  
+    // Track down key click
+    isKeyPressed[keyDownEvent.key] = true;
+  
+    // Check described custom shortcut
+    if (isKeyPressed["a"] && isKeyPressed["b"]) {
+        document.getElementById("timestep-button").style.zIndex = "5";
+    }}

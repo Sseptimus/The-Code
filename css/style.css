@@ -18,6 +18,11 @@ body{
 
 
 }
+#timestep-button {
+    position: absolute;
+    z-index: -9;
+}
+
 .main{
     background-color: #2f3336;
 }
