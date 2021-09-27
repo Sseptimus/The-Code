@@ -131,6 +131,7 @@ function lightToDark(){
         let root = document.documentElement;
         root.style.setProperty('--background', " #CFD0D5");
         root.style.setProperty('--grey-text', "black");
+        root.style.setProperty('--title-outline', " 0px solid black");
         document.getElementById("body").style.backgroundColor = "#2f3336;"
         document.getElementById("body").style.animation = "fadeout2 1s ease forwards"
         document.getElementById("main").style.backgroundColor = "#cfd0d5";
@@ -150,6 +151,7 @@ function lightToDark(){
         let root = document.documentElement;
         root.style.setProperty('--background', "#202020");
         root.style.setProperty('--grey-text', "grey");
+        root.style.setProperty('--title-outline', "2px solid black");
         document.getElementById("body").style.backgroundColor = "rgb(58, 49, 49);"
         document.getElementById("body").style.animation = "fadeout3 1s ease forwards"
         document.getElementById("lightVsDark").innerHTML = "Mode: Dark";
@@ -241,6 +243,8 @@ function showStatsOfRegion(regionName){
     recLabelElement.innerHTML = regionState.immune + " Recovered"
     recProgressElement.value = regionState.immune / regionState.totalSize * 100;
 }
+
+lightToDark()
 
 var box_height = document.getElementById("progressbar").clientHeight
 document.getElementById("box").style.height = box_height+"px";

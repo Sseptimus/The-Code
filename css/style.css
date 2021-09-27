@@ -6,7 +6,7 @@ body{
 :root {
     --background: #202020;
     --grey-text: rgb(122, 122, 122);
-    --title-bg:
+    --title-outline: 2px solid black;
 }
 
 .wrapper{
@@ -243,8 +243,8 @@ body{
     margin-bottom: 10px;
     padding-bottom: 10px;
     background-color: var(--background);
-    outline: 2px solid black;
-    color: var(--grey-text)
+    outline: var(--title-outline);
+    color: var(--grey-text);
 }
 
 #title{
