@@ -169,16 +169,6 @@ function lightToDark(){
     }
 }
 
-var coolButtonState = "left"
-function coolButtonPresed(){
-    if (coolButtonState == "left"){
-        coolButtonState = "right"
-        document.getElementById("coolButtonIcon").style.animation = "leftToRight 1s ease forwards"
-    }else{
-        coolButtonState = "left"
-        document.getElementById("coolButtonIcon").style.animation = "rightToLeft 1s ease forwards"
-    }
-}
 
 // variabales
 var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);

@@ -14,6 +14,7 @@
 <div id = "screenshots">
 <div id="slideshow">
 <img src="img\Covidsimwebsite.PNG" alt="Description for image" width = "50%" id = "image1">
+<img src="img\lightModeScreneshot.PNG" alt="Description for image" width = "50%" id = "image1">
 </div>
 </div>
 <br>
@@ -79,6 +80,7 @@ Delta:
 #image1 {
     border-radius: 3px;
     border: 3px solid black
+    padding-top: 10px;
 }
 #image1:hover {
     transition: all .2s ease-in-out;
@@ -87,6 +89,13 @@ Delta:
 #text-line {
     transition: all .2s ease-in-out;
     transform: scale(1.05)
+}
+#image1:hover {
+  cursor: pointer;
+  -moz-box-shadow: 8px 15px 0px #9AA3A8;
+  -webkit-box-shadow: 8px 15px 0px #9AA3A8;
+  box-shadow: 8px 15px 0px #9AA3A8;
+  -webkit-transition: all 500ms ease;
 }
 
 </style>
