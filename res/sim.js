@@ -49,8 +49,6 @@ function binomial(n, p){ //Aproxximated by a gaussian bell curve
 
 //0.25 has a 1/4 chance of becoming 1 and a 3/4 chance of becoming 0
 function randomRound(n){
-    if(n < 0) return 
-
     if(Math.random() < (n % 1)){
         return Math.ceil(n)
     }else{
@@ -122,7 +120,8 @@ class RegionState{
         const newFound = binomial(this.symptomatic, currentFindingRate)
         const newHospitalised = binomial(this.found, currentHospitalisationRate / (SYMPTOM_LENGTH + 1))
 
-        const removalsFromHospitals = binomial(this.hospitalised, 2 / (SYMPTOM_LENGTH))
+        let removalsFromHospitals = binomial(this.hospitalised, 2 / (SYMPTOM_LENGTH))
+        if(removalsFromHospitals > this.hospitalised) removalsFromHospitals = this.hospitalised
         const deathsFromHospital = binomial(removalsFromHospitals, currentDeathRate / currentHospitalisationRate)
         const recoveriesFromHospital = removalsFromHospitals - deathsFromHospital
 
