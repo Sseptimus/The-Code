@@ -40,6 +40,14 @@ function loaded() {
 
   recolorRegions()
   document.getElementById("loader").style.animation = "drop 1s ease forwards";
+
+  if(getCookie("seen_disclaimer") == "True"){
+      document.getElementById("disclaimer").style.display = "none"
+    let wrapper = document.getElementsByClassName("wrapper")[0];
+
+    wrapper.style.opacity = 1.0;
+    wrapper.style["pointer-events"] = "auto";
+  }
 }
 
 function switchToStats() {
@@ -124,6 +132,8 @@ function recolorRegions(){
     }
 }
 
+var p
+
 function lightToDark(){
     if (eyepain == "none"){
         eyepain = "ungodly"
@@ -139,8 +149,13 @@ function lightToDark(){
         document.getElementById("lightVsDark").style.backgroundColor = "white";
         document.getElementById("options1").style.backgroundColor = "white";
         document.getElementById("options1").style.color = "black";
-        document.getElementById("statButton").style.backgroundColor = "#1b1d21";
-        document.getElementById("statButton").style.color = "white";
+
+        //document.getElementById("statButton").style.backgroundColor = "#1b1d21";
+        let bigButtons = document.getElementsByClassName("bigButton")
+        for(let item of bigButtons){
+            item.style.backgroundColor = "#1b1d21"
+            item.style.color = "white";
+        }
         document.getElementById("nzmap").style.fill = "	#fdfdfd";
         
         document.getElementById("body").style.animation = "fadein2 1s ease forwards"
@@ -158,8 +173,13 @@ function lightToDark(){
         document.getElementById("lightVsDark").style.backgroundColor = "#202020";
         document.getElementById("options1").style.backgroundColor = "#282b2e";
         document.getElementById("title").style.color = "rgb(58, 179, 166)";
-        document.getElementById("statButton").style.backgroundColor = "rgb(58, 49, 49)";
-        document.getElementById("statButton").style.color = "orange";
+
+        let bigButtons = document.getElementsByClassName("bigButton")
+        for(let item of bigButtons){
+            item.style.backgroundColor = "rgb(58, 49, 49)";
+            item.style.color = "orange";
+        }
+
         document.getElementById("main").style.backgroundColor = "#2f3336";
         document.getElementById("nzmap").style.fill = "#52585d";
         document.getElementById("body").style.animation = "fadein3 1s ease forwards"
@@ -207,6 +227,22 @@ function timestep(){
     recolorRegions();
 }
 
+function getCookie(cname){
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+  return "";
+}
+
 function showStatsOfRegion(regionName){
     regionState = globalState.getRegion(regionName);
 
@@ -233,9 +269,27 @@ function showStatsOfRegion(regionName){
     recProgressElement.value = regionState.immune / regionState.totalSize * 100;
 }
 
+function hideDisclaimer(){
+    document.getElementById("disclaimer").style.display = "none"
+    let wrapper = document.getElementsByClassName("wrapper")[0];
 
+    wrapper.style.opacity = 1.0;
+    wrapper.style["pointer-events"] = "auto";
 
+    const d = new Date();
+    d.setTime(d.getTime() + 30 * 86400 * 1000);
+    let cookie = "seen_disclaimer=True;expires=" + d.toUTCString();
+    console.log(cookie);
+    document.cookie = cookie;
+}
 
+function showDislaimer(){
+    document.getElementById("disclaimer").style.display = "block";
+    let wrapper = document.getElementsByClassName("wrapper")[0];
+
+    wrapper.style.opacity = 0.5;
+    wrapper.style["pointer-events"] = "none";
+}
 
 lightToDark()
 

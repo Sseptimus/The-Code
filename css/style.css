@@ -15,8 +15,6 @@ body{
     grid-template-areas: 
     "main options1";
     background-color: black;
-
-
 }
 #timestep-button {
     position: absolute;
@@ -150,6 +148,23 @@ body{
 .displaySetings{
     margin-left: 10%;
     margin-bottom: 5%;
+}
+
+.bigButton{
+    background-color: rgb(27, 29, 33);
+    font-size: 24px;
+    border: none;
+    padding: 10px 25px;
+    margin: 10px 5px;
+    text-align:center;
+    color: white;
+    display: inline-block;
+}
+
+#important-buttons{
+    display: inline-block;
+    position: absolute;
+    right: 2%;
 }
 
 #selectSpeed{
@@ -310,24 +325,7 @@ body{
     width: 50%;
 }
 
-
-
-#statButton{
-    background-color: rgb(58, 49, 49);
-    font-size: 24px;
-    border: none;
-    color: orange;
-    padding: 10px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    position: absolute; 
-    right: 5%;
-
-
-}
-
-#statButton:hover{
+.bigButton:hover{
     transition: all .2s ease-in-out;
     transform: scale(1.1)
 }
@@ -355,7 +353,7 @@ svg{
     font-family: 'Lato', sans-serif;
     outline: 2px solid black;
 }
-#quit-messsage {
+.quit-messsage {
     background-color: rgba(0, 0, 0, 0);
     color: var(--grey-text);
     border: 0px solid;
@@ -537,3 +535,21 @@ opacity: 1;
   }
 
 
+#disclaimer {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 200%;
+
+    padding: 30px;
+    background-color: white;
+    border-radius: 5px;
+    border-color: #000;
+    border-style: solid;
+    border-width: 5px;
+    width: 75%;
+}
