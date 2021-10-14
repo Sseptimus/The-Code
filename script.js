@@ -39,6 +39,7 @@ function loaded() {
   recalculateSimParams();
 
   recolorRegions()
+  document.getElementById("loader").style.animation = "drop 1s ease forwards";
 }
 
 function switchToStats() {
@@ -73,6 +74,10 @@ function updatedist(){
 
 function updatevac(){
     document.getElementById("vac").innerHTML = document.getElementById("vacrange").value + "%";
+    if (document.getElementById("vacrange").value > 1) {
+    document.getElementById("popup").style.zIndex = "5";
+    
+    }
 }
 
 function clicking(id) {
@@ -123,6 +128,10 @@ function recolorRegions(){
 function lightToDark(){
     if (eyepain == "none"){
         eyepain = "ungodly"
+        let root = document.documentElement;
+        root.style.setProperty('--background', " #CFD0D5");
+        root.style.setProperty('--grey-text', "black");
+        root.style.setProperty('--title-outline', " 0px solid black");
         document.getElementById("body").style.backgroundColor = "#2f3336;"
         document.getElementById("body").style.animation = "fadeout2 1s ease forwards"
         document.getElementById("main").style.backgroundColor = "#cfd0d5";
@@ -134,10 +143,15 @@ function lightToDark(){
         document.getElementById("statButton").style.backgroundColor = "#1b1d21";
         document.getElementById("statButton").style.color = "white";
         document.getElementById("nzmap").style.fill = "	#fdfdfd";
+        
         document.getElementById("body").style.animation = "fadein2 1s ease forwards"
 
     }else{
         eyepain = "none"
+        let root = document.documentElement;
+        root.style.setProperty('--background', "#202020");
+        root.style.setProperty('--grey-text', "grey");
+        root.style.setProperty('--title-outline', "2px solid black");
         document.getElementById("body").style.backgroundColor = "rgb(58, 49, 49);"
         document.getElementById("body").style.animation = "fadeout3 1s ease forwards"
         document.getElementById("lightVsDark").innerHTML = "Mode: Dark";
@@ -155,16 +169,6 @@ function lightToDark(){
     }
 }
 
-var coolButtonState = "left"
-function coolButtonPresed(){
-    if (coolButtonState == "left"){
-        coolButtonState = "right"
-        document.getElementById("coolButtonIcon").style.animation = "leftToRight 1s ease forwards"
-    }else{
-        coolButtonState = "left"
-        document.getElementById("coolButtonIcon").style.animation = "rightToLeft 1s ease forwards"
-    }
-}
 
 // variabales
 var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -229,3 +233,42 @@ function showStatsOfRegion(regionName){
     recLabelElement.innerHTML = regionState.immune + " Recovered"
     recProgressElement.value = regionState.immune / regionState.totalSize * 100;
 }
+
+
+
+
+
+lightToDark()
+
+var box_height = document.getElementById("progressbar").clientHeight
+document.getElementById("box").style.height = box_height+"px";
+var box_width = document.getElementById("susProgress").clientWidth
+document.getElementById("box").style.width = box_width+3+"px";
+console.log("box dimentions",box_width , box_height)
+
+window.addEventListener('resize', function(event){
+ var box_height = document.getElementById("progressbar").clientHeight
+document.getElementById("box").style.height = box_height+"px";
+var box_width = document.getElementById("susProgress").clientWidth
+document.getElementById("box").style.width = box_width+3+"px";
+console.log("box dimentions",box_width , box_height)
+});
+
+var isKeyPressed = {
+    t: false, // ASCII code for 'a'
+    s: false // ASCII code for 'b'
+    // ... Other keys to check for custom key combinations
+  };
+
+
+document.onkeydown = keyDownEvent => {
+    //Prevent default key actions, if desired
+    keyDownEvent.preventDefault();
+  
+    // Track down key click
+    isKeyPressed[keyDownEvent.key] = true;
+  
+    // Check described custom shortcut
+    if (isKeyPressed["a"] && isKeyPressed["b"]) {
+        document.getElementById("timestep-button").style.zIndex = "5";
+    }}
