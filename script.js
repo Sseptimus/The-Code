@@ -91,18 +91,35 @@ function clicking(id) {
     d3.select(id).style("fill", "red");
 }
 
+function getTimestepInterval(){
+    return 2000 / parseInt(document.getElementById("selectSpeed").value);
+}
+
 var runningSim = false
+var timeoutMethod = 0;
 function startStop(){
         console.log("start/stop");
         if (runningSim){
             runningSim = false;
+
+            clearTimeout(timeoutMethod);
             animatePlay()
-
-
         }else{
             runningSim = true
+            timeoutMethod = setInterval(() => {
+                timestep();
+            }, getTimestepInterval())
             animatePause()
         }
+}
+
+function updateSpeed(){
+    if(runningSim){
+        clearTimeout(timeoutMethod);
+        timeoutMethod = setInterval(() => {
+            timestep();
+        }, getTimestepInterval())
+    }
 }
 
 function zooming(e) {
@@ -324,4 +341,56 @@ document.onkeydown = keyDownEvent => {
     // Check described custom shortcut
     if (isKeyPressed["a"] && isKeyPressed["b"]) {
         document.getElementById("timestep-button").style.zIndex = "5";
-    }}
+    }
+}
+
+var chart;
+const wantedData = [["Susceptible", "susceptible", "blue", "cyan"]]
+function createGraphForRegion(regionName){
+    if(chart != undefined){
+        chart.destroy();
+    }
+    let datasets = []
+
+    for(let dataMetaData of wantedData){
+        let dataList = [];
+
+        for(let regionData of data){
+            const region = regionData.getRegion(regionName);
+            dataList.push(region[dataMetaData[1]]);
+        }
+
+        const dataset = {
+            label: dataMetaData[0],
+            data: dataList,
+            fill: false,
+            borderColor: dataMetaData[2],
+            fillColor: dataMetaData[3]
+        }
+
+        datasets.push(dataset);
+    }
+
+    let labels = [];
+    for(var i = 0; i < data.length; i++){
+        labels.push("Day " + i);
+    }
+
+    let config = {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: datasets
+        },
+        options: {
+            responsive: false
+        }
+    }
+
+    document.getElementById("data-graph").style.display = 'block';
+
+    chart = new Chart(
+        document.getElementById("graph-canvas"),
+        config
+    );
+}

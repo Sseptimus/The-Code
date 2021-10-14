@@ -188,15 +188,39 @@ class RegionState{
 
         this.susceptible -= newExposed;
     }
+
+    copy(){
+        let clone = new RegionState(this.totalSize, this.name);
+
+        clone.susceptible = this.susceptible;
+        clone.exposed = this.exposed;
+        clone.symptomatic = this.symptomatic;
+        clone.found = this.found;
+        clone.hospitalised = this.hospitalised;
+        clone.dead = this.dead;
+        clone.immune = this.immune;
+
+        return clone;
+    }
 }
 
+var data = []
+
 class SimulationState{
-    constructor(){
+    constructor(copyFrom){
         this.regions = {};
-        for(const entry in populationsOfRegions){
-            console.log(entry);
-            this.regions[entry] = new RegionState(populationsOfRegions[entry], entry)
+        if(copyFrom == undefined){
+            for(const entry in populationsOfRegions){
+                console.log(entry);
+                this.regions[entry] = new RegionState(populationsOfRegions[entry], entry)
+            }
+        }else{
+            for(let entry in copyFrom.regions){
+                this.regions[entry] = copyFrom.regions[entry].copy();
+            }
         }
+        
+        this.started = false;
     }
 
     infect(amount){
@@ -204,7 +228,14 @@ class SimulationState{
     }
 
     timestep(){
+        if(!this.started){
+            this.infect(5);
+            this.started = true;
+        }
+
         Object.entries(this.regions).forEach(entry => {entry[1].timestep();});
+
+        data.push(this.copy());
     }
 
     getRegion(name){
@@ -240,9 +271,20 @@ class SimulationState{
 
         return stats;
     }
+
+    copy(){
+        return new SimulationState(this);
+    }
 }
 
-var globalState = new SimulationState();
+var globalState;
+
+function resetSimulation(){
+    globalState = new SimulationState();
+    data.push(globalState.copy());
+}
+
+resetSimulation();
 
 function test(){
     Object.entries(globalState.regions).forEach((entry) => {
