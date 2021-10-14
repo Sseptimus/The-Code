@@ -44,7 +44,15 @@ function binomial(n, p){ //Aproxximated by a gaussian bell curve
     var u =0, v = 0;
     while (u === 0) u = Math.random();
     while(v === 0) v = Math.random();
-    return Math.max(0, randomRound(Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v) * sigma + mu));
+    let value = Math.max(0, randomRound(Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v) * sigma + mu));
+    if(isNaN(value)){
+        console.log("Binomial returned NaN N = " + n + " P = " + p)
+    }
+
+    if(value == undefined){
+        console.log("Binomial returned Undefined N = " + n + " P = " + p)
+    }
+    return Math.min(n, value);
 }
 
 //0.25 has a 1/4 chance of becoming 1 and a 3/4 chance of becoming 0
@@ -117,16 +125,50 @@ class RegionState{
         if(this.exposed > 0){
             console.log(this.name +": " + newExposed + " new infections")
         }
-        const newFound = binomial(this.symptomatic, currentFindingRate)
-        const newHospitalised = binomial(this.found, currentHospitalisationRate / (SYMPTOM_LENGTH + 1))
+        let newFound = binomial(this.symptomatic, currentFindingRate)
+        let newHospitalised = binomial(this.found, currentHospitalisationRate / (SYMPTOM_LENGTH + 1))
 
         let removalsFromHospitals = binomial(this.hospitalised, 2 / (SYMPTOM_LENGTH))
         if(removalsFromHospitals > this.hospitalised) removalsFromHospitals = this.hospitalised
         const deathsFromHospital = binomial(removalsFromHospitals, currentDeathRate / currentHospitalisationRate)
         const recoveriesFromHospital = removalsFromHospitals - deathsFromHospital
 
-        const recoveriesFromFound = binomial(this.found, 1 / (SYMPTOM_LENGTH + 1))
-        const recoveriesFromUnfound = binomial(this.symptomatic, 1 / (SYMPTOM_LENGTH + 1))
+        let recoveriesFromFound = binomial(this.found, 1 / (SYMPTOM_LENGTH + 1))
+        let recoveriesFromUnfound = binomial(this.symptomatic, 1 / (SYMPTOM_LENGTH + 1))
+
+        if(newHospitalised + recoveriesFromFound > this.found){
+            let w1 = currentHospitalisationRate / (SYMPTOM_LENGTH + 1);
+            let w2 = 1 / (SYMPTOM_LENGTH + 1);
+            let total = w1 + w2;
+
+            w1 /= total;
+
+            newHospitalised = Math.floor(this.found * w1);
+            recoveriesFromFound = this.found - newHospitalised;
+        }
+
+        if(newFound + recoveriesFromUnfound > this.symptomatic){
+            let w1 = currentFindingRate;
+            let w2 = 1 / (SYMPTOM_LENGTH + 1)
+
+            w1 /= (w1 + w2);
+
+            newFound = Math.floor(this.symptomatic * w1);
+            recoveriesFromUnfound = this.symptomatic - newFound;
+        }
+
+        if(isNaN(newExposed)) console.log("New Exposed is NaN")
+        if(isNaN(newInfectuous)) console.log("New Infectuous is NaN")
+        if(isNaN(newFound)) console.log("New Found is NaN")
+        if(isNaN(newHospitalised)) console.log("New Hospitalised is NaN")
+        if(isNaN(deathsFromHospital)) console.log("Deaths from hospitalised is NaN")
+        if(isNaN(recoveriesFromHospital)) console.log("Recoveries from hospitalised is NaN")
+        if(isNaN(recoveriesFromUnfound)) console.log("Recoveries from unfound is NaN")
+        if(isNaN(recoveriesFromFound)) console.log("Recoveries from found is NaN")
+
+        if(isNaN(newExposed) || isNaN(newInfectuous) || isNaN(newFound) || isNaN(newHospitalised) || isNaN(deathsFromHospital) || isNaN(recoveriesFromHospital) || isNaN(recoveriesFromUnfound) || isNaN(recoveriesFromFound)){
+            return; //Skip updates
+        }
 
         //Apply changes
         this.immune += recoveriesFromUnfound + recoveriesFromFound + recoveriesFromHospital;
@@ -201,3 +243,13 @@ class SimulationState{
 }
 
 var globalState = new SimulationState();
+
+function test(){
+    Object.entries(globalState.regions).forEach((entry) => {
+        entry[1].infect(5);
+    })
+
+    for(var i = 0; i < 200; i++){
+        timestep();
+    }
+}
