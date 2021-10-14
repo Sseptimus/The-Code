@@ -75,8 +75,7 @@ function updatedist(){
 function updatevac(){
     document.getElementById("vac").innerHTML = document.getElementById("vacrange").value + "%";
     if (document.getElementById("vacrange").value > 1) {
-    document.getElementById("popup").style.zIndex = "5";
-    
+        document.getElementById("popup").style.zIndex = "5";
     }
 }
 
