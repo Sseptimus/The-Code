@@ -345,36 +345,61 @@ document.onkeydown = keyDownEvent => {
 }
 
 var chart;
-const wantedData = [["Susceptible", "susceptible", "blue", "cyan"]]
+const maxItems = 300;
+const wantedData = [
+    ["Healthy", (region) => {return region.susceptible + region.exposed}, "blue"],
+    ["Unknown", (region) => {return region.symptomatic}, "red"],
+    ["Found", (region) => {return region.found}, "orange"],
+    ["Hospitalised", (region) => {return region.hospitalised}, "purple"],
+    ["Dead", (region) => {return region.dead}, "#ddd"],
+    ["Recovered", (region) => {return region.immune}, "green"]
+]
 function createGraphForRegion(regionName){
     if(chart != undefined){
         chart.destroy();
     }
     let datasets = []
+    var step = Math.floor(data.length / maxItems) + 1;
 
     for(let dataMetaData of wantedData){
         let dataList = [];
 
+        var i = -1;
         for(let regionData of data){
+            i++;
+            if(i % step != 0) continue;
             const region = regionData.getRegion(regionName);
-            dataList.push(region[dataMetaData[1]]);
+            dataList.push(dataMetaData[1](region));
         }
 
         const dataset = {
             label: dataMetaData[0],
             data: dataList,
-            fill: false,
+            fill: true,
             borderColor: dataMetaData[2],
-            fillColor: dataMetaData[3]
+            backgroundColor: dataMetaData[2]
         }
 
         datasets.push(dataset);
     }
 
     let labels = [];
+    var index = 0;
     for(var i = 0; i < data.length; i++){
+        if(i % step != 0) continue;
         labels.push("Day " + i);
+
+        let total = 0;
+        for(var j = datasets.length - 1; j >= 0; j--){
+            const value = datasets[j].data[index];
+            datasets[j].data[index] += total;
+            total += value;
+        }
+        index++;
     }
+
+    datasets.reverse();
+    console.log(datasets)
 
     let config = {
         type: 'line',
@@ -383,7 +408,25 @@ function createGraphForRegion(regionName){
             datasets: datasets
         },
         options: {
-            responsive: false
+            responsive: false,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let value = context.parsed.y;
+                            if(context.datasetIndex - 1 != -1){
+                                value -= datasets[context.datasetIndex - 1].data[context.dataIndex];
+                            }
+
+                            return context.dataset.label + ": " + value;
+                        }
+                    }
+                }
+            },
+            interaction:{
+                mode: 'index',
+                acis: 'y'
+            }
         }
     }
 

@@ -209,6 +209,7 @@ var data = []
 class SimulationState{
     constructor(copyFrom){
         this.regions = {};
+        this.totalPop = 0;
         if(copyFrom == undefined){
             for(const entry in populationsOfRegions){
                 console.log(entry);
@@ -218,6 +219,10 @@ class SimulationState{
             for(let entry in copyFrom.regions){
                 this.regions[entry] = copyFrom.regions[entry].copy();
             }
+        }
+
+        for(let entry in Object.values(this.regions)){
+            this.totalPop += entry.totalSize;
         }
         
         this.started = false;
