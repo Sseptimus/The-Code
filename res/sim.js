@@ -21,6 +21,161 @@ const populationsOfRegions = {
     //"World":7895000000
 }
 
+const travelFactor = 100;
+
+const travel = {
+    "Manawatu-Wanganui" : {
+        "Auckland": 400,
+        "Wellington": 300,
+        "Canterbury": 200,
+        "Taranaki": 100,
+        "Waikato": 200,
+        "Bay of Plenty": 100,
+        "Hawke's Bay": 100
+    },
+    "Gisborne District" :{
+        "Auckland": 200,
+        "Wellington": 150,
+        "Canterbury": 100,
+        "Bay of Plenty": 50,
+        "Hawke's Bay": 50
+    },
+    "Northland": {
+        "Auckland": 500,
+        "Wellington": 300,
+        "Canterbury": 200
+    },
+    "Auckland": {
+        "Manawatu-Wanganui": 400,
+        "Gisborne District": 200,
+        "Northland": 500,
+        "Waikato": 600,
+        "Bay of Plenty": 500,
+        "Hawke's Bay": 200,
+        "Taranaki": 200,
+        "Wellington": 2000,
+        "Tasman District": 100,
+        "Nelson City": 100,
+        "Marlborough District": 100,
+        "West Coast": 80,
+        "Canterbury": 1200,
+        "Otago": 500,
+        "Southland": 200
+    },
+    "Waikato": {
+        "Auckland": 500,
+        "Canterbury": 300,
+        "Wellington": 400,
+        "Taranaki": 200,
+        "Manawatu-Wanganui": 200,
+        "Hawke's Bay": 150,
+        "Bay of Plenty": 150
+    },
+    "Bay of Plenty": {
+        "Auckland": 500,
+        "Canterbury": 200,
+        "Wellington": 300,
+        "Waikato": 200,
+        "Manawatu-Wanganui": 100,
+        "Gisborne District": 50,
+        "Hawke's Bay": 100
+    },
+    "Hawke's Bay": {
+        "Auckland": 200,
+        "Canterbury": 50,
+        "Wellington": 100,
+        "Gisborne District": 50,
+        "Waikato": 80,
+        "Manawatu-Wanganui": 100,
+        "Bay of Plenty": 100
+    },
+    "Taranaki": {
+        "Auckland": 200,
+        "Canterbury": 100,
+        "Wellington": 150,
+        "Waikato": 80,
+        "Manawatu-Wanganui":  100
+    },
+    "Wellington": {
+        "Manawatu-Wanganui": 300,
+        "Gisborne District": 150,
+        "Northland": 300,
+        "Auckland": 2000,
+        "Waikato": 400,
+        "Bay of Plenty": 300,
+        "Hawke's Bay": 100,
+        "Taranaki": 100,
+        "Tasman District": 50,
+        "Nelson City": 70,
+        "Marlborough District": 200,
+        "West Coast": 40,
+        "Canterbury": 1000,
+        "Otago": 250,
+        "Southland": 100
+    },
+    "Tasman District": {
+        "Auckland": 100,
+        "Canterbury": 30,
+        "Wellington": 50,
+        "Marlborough District": 50,
+        "West Coast": 50,
+        "Nelson City": 50
+    },
+    "Nelson City": {
+        "Auckland": 100,
+        "Canterbury": 30,
+        "Wellington": 70,
+        "Tasman District": 50,
+        "Marlborough District": 60
+    },
+    "Marlborough District": {
+        "Auckland": 100,
+        "Wellington": 200,
+        "Canterbury": 100,
+        "Tasman District": 50,
+        "Nelson City": 60
+    },
+    "West Coast": {
+        "Auckland": 80,
+        "Wellington": 40,
+        "Canterbury": 40,
+        "Tasman District":50,
+        "Otago": 50,
+        "Southland": 40
+    },
+    "Canterbury": {
+        "Manawatu-Wanganui": 200,
+        "Gisborne District": 100,
+        "Northland": 200,
+        "Auckland": 1200,
+        "Waikato": 300,
+        "Bay of Plenty": 200,
+        "Hawke's Bay": 50,
+        "Taranaki": 100,
+        "Wellington": 1000,
+        "Tasman District": 30,
+        "Nelson City": 30,
+        "Marlborough District": 100,
+        "West Coast": 40,
+        "Otago": 200,
+        "Southland": 100
+    },
+    "Otago": {
+        "Auckland": 500,
+        "Wellington": 250,
+        "Canterbury": 200,
+        "Southland": 50,
+        "West Coast": 40,
+    },
+    "Southland": {
+        "Auckland": 200,
+        "Wellington": 100,
+        "Canterbury": 100,
+        "Otago": 50,
+        "West Coast": 40
+    }
+}
+
 const strains = {
     "original" : {"R" : 2.5, "hospitalisation" : 0.0243, "death" : 0.0066},
     "alpha" : {"R" : 3.225, "hospitalisation" : 0.03, "death" : 0.01},
@@ -118,6 +273,23 @@ class RegionState{
         this.susceptible -= amount;
     }
 
+    getStateAsArray(){
+        return [
+            this.susceptible, this.exposed, this.symptomatic,
+            this.found, this.hospitalised, this.dead, this.immune
+        ];
+    }
+
+    setStateFromArray(arr){
+        this.susceptible = arr[0];
+        this.exposed = arr[1];
+        this.symptomatic = arr[2];
+        this.found = arr[3];
+        this.hospitalised = arr[4];
+        this.dead = arr[5];
+        this.immune = arr[6];
+    }
+
     timestep(){
         //Calculate changes
         const newExposed = binomial(this.susceptible, currentR / (SYMPTOM_LENGTH + 1) * this.symptomatic / this.totalSize);
@@ -206,6 +378,8 @@ class RegionState{
 
 var data = []
 
+const excludedFromTravel = [1, 1, 1, 0, 0, 0, 1];
+
 class SimulationState{
     constructor(copyFrom){
         this.regions = {};
@@ -239,8 +413,92 @@ class SimulationState{
         }
 
         Object.entries(this.regions).forEach(entry => {entry[1].timestep();});
+        this.doTravel();
 
         data.push(this.copy());
+    }
+
+    doTravel(){
+        let done = [];
+
+        for(let entry of Object.entries(travel)){
+            let travels = entry[1];
+            let regionName = entry[0];
+            let from = this.regions[regionName];
+            for(let travelEntry of Object.entries(travels)){
+                if(done.includes(travelEntry[0])) break;
+
+                let to = this.regions[travelEntry[0]];
+                let amount = travelEntry[1];
+
+                let stateOne = from.getStateAsArray();
+                let stateTwo = to.getStateAsArray();
+
+                let weightsOne = [];
+                let weightsTwo = [];
+                let moveFromOne = [];
+                let moveFromTwo = [];
+
+                let totalOne = 0;
+                let totalTwo = 0;
+
+                for(var i = 0; i < stateOne.length; i++){
+                    totalOne += weightsOne[i] = Math.random() * stateOne[i] * excludedFromTravel[i];
+                    totalTwo += weightsTwo[i] = Math.random() * stateTwo[i] * excludedFromTravel[i];
+                }
+
+                let totalFromOne = 0;
+                let totalFromTwo = 0;
+
+                for(var i = 0; i < stateOne.length; i++){
+                    totalFromOne += moveFromOne[i] = randomRound(weightsOne[i] * amount / totalOne);
+                    totalFromTwo += moveFromTwo[i] = randomRound(weightsTwo[i] * amount / totalTwo);
+                }
+
+                let diffOne = amount - totalFromOne;
+                if(diffOne != 0){
+                    let sign = diffOne < 0 ? -1 : 1;
+                    let I = 0;
+                    while(diffOne != 0){
+                        let index = randint(0, stateOne.length);
+                        if(moveFromOne[index] != 0){
+                            moveFromOne[index] += sign;
+                            diffOne -= sign;
+                        }
+                        I++;
+                        if(I > 10000) console.log("This shouldn't happen");
+                    }
+                }
+
+                let diffTwo = amount - totalFromTwo;
+                if(diffTwo != 0){
+                    let sign = diffTwo < 0 ? -1 : 1;
+                    while(diffTwo != 0){
+                        let index = randint(0, stateTwo.length);
+                        if(moveFromTwo[index] != 0){
+                            moveFromTwo[index] += sign;
+                            diffTwo -= sign;
+                        }
+                    }
+                }
+
+                console.log(moveFromOne);
+                console.log(moveFromTwo);
+
+                for(var i = 0; i < stateOne.length; i++){
+                    stateOne[i] += moveFromTwo[i];
+                    stateOne[i] -= moveFromOne[i];
+
+                    stateTwo[i] += moveFromOne[i];
+                    stateTwo[i] -= moveFromTwo[i];
+                }
+
+                from.setStateFromArray(stateOne);
+                to.setStateFromArray(stateTwo);
+            }
+
+            done.push(regionName);
+        }
     }
 
     getRegion(name){
