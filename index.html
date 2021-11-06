@@ -216,8 +216,12 @@
                 </div>
             </div>
             <div class="reset">
-                <button id="resetButton" onclick=spin()>
+                <button id="resetButton" onclick=resetSim()>
                     <svg height="10" width="10" , id="resetButtonSvg" , viewBox="0 0 10 10">
+                        <g>
+                            <text x="0" y = "10" id = "resetText">↺</text>
+                            <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 5 5" to="-360 5 5" dur="0.2s" begin="click"></animateTransform>
+                        </g>
                     </svg>
                     <script src="res\resetButton.js">
                     </script>
