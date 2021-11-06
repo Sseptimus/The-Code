@@ -426,9 +426,12 @@ class SimulationState{
             let regionName = entry[0];
             let from = this.regions[regionName];
             for(let travelEntry of Object.entries(travels)){
-                if(done.includes(travelEntry[0])) break;
-
                 let to = this.regions[travelEntry[0]];
+
+                let lookupKey = to.name < from.name ? from.name + "|" + to.name : to.name + "|" + from.name;
+                console.log(lookupKey);
+                if(done.includes(lookupKey)) continue;
+
                 let amount = travelEntry[1];
 
                 let stateOne = from.getStateAsArray();
@@ -495,9 +498,9 @@ class SimulationState{
 
                 from.setStateFromArray(stateOne);
                 to.setStateFromArray(stateTwo);
-            }
 
-            done.push(regionName);
+                done.push(lookupKey);
+            }
         }
     }
 
