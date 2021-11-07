@@ -378,6 +378,11 @@ class RegionState{
 
 var data = []
 
+function min(a, b){
+    if(a < b) return a;
+    return b;
+}
+
 const excludedFromTravel = [1, 1, 1, 0, 0, 0, 1];
 
 class SimulationState{
@@ -426,9 +431,12 @@ class SimulationState{
             let regionName = entry[0];
             let from = this.regions[regionName];
             for(let travelEntry of Object.entries(travels)){
-                if(done.includes(travelEntry[0])) break;
-
                 let to = this.regions[travelEntry[0]];
+
+                let lookupKey = to.name < from.name ? from.name + "|" + to.name : to.name + "|" + from.name;
+                console.log(lookupKey);
+                if(done.includes(lookupKey)) continue;
+
                 let amount = travelEntry[1];
 
                 let stateOne = from.getStateAsArray();
@@ -451,9 +459,11 @@ class SimulationState{
                 let totalFromTwo = 0;
 
                 for(var i = 0; i < stateOne.length; i++){
-                    totalFromOne += moveFromOne[i] = randomRound(weightsOne[i] * amount / totalOne);
-                    totalFromTwo += moveFromTwo[i] = randomRound(weightsTwo[i] * amount / totalTwo);
+                    totalFromOne += moveFromOne[i] = min(randomRound(weightsOne[i] * amount / totalOne), stateOne[i]);
+                    totalFromTwo += moveFromTwo[i] = min(randomRound(weightsTwo[i] * amount / totalTwo), stateTwo[i]);
                 }
+
+                amount = min(totalFromOne, totalFromTwo);
 
                 let diffOne = amount - totalFromOne;
                 if(diffOne != 0){
@@ -463,10 +473,19 @@ class SimulationState{
                         let index = randint(0, stateOne.length);
                         if(moveFromOne[index] != 0){
                             moveFromOne[index] += sign;
+
+                            if(moveFromOne[index] > stateOne[index]){
+                                moveFromOne[index] -= sign;
+                                continue;
+                            }
+
                             diffOne -= sign;
                         }
                         I++;
-                        if(I > 10000) console.log("This shouldn't happen");
+                        if(I > 10000){
+                            console.log("This shouldn't happen");
+                            return;
+                        }
                     }
                 }
 
@@ -477,6 +496,10 @@ class SimulationState{
                         let index = randint(0, stateTwo.length);
                         if(moveFromTwo[index] != 0){
                             moveFromTwo[index] += sign;
+                            if(moveFromTwo[index] > stateTwo[index]){
+                                moveFromTwo[index] -= sign;
+                                continue;
+                            }
                             diffTwo -= sign;
                         }
                     }
@@ -495,9 +518,9 @@ class SimulationState{
 
                 from.setStateFromArray(stateOne);
                 to.setStateFromArray(stateTwo);
-            }
 
-            done.push(regionName);
+                done.push(lookupKey);
+            }
         }
     }
 
