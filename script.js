@@ -103,13 +103,13 @@ function startStop(){
             runningSim = false;
 
             clearTimeout(timeoutMethod);
-            animatePlay()
+            animatePause();
         }else{
             runningSim = true
             timeoutMethod = setInterval(() => {
                 timestep();
             }, getTimestepInterval())
-            animatePause()
+            animatePlay();
         }
 }
 
@@ -347,7 +347,7 @@ document.onkeydown = keyDownEvent => {
 var chart;
 const maxItems = 300;
 const wantedData = [
-    ["Healthy", (region) => {return region.susceptible + region.exposed}, "blue"],
+    ["Healthy", (region) => {return region.susceptible + region.exposed}, "darkBlue"],
     ["Unknown", (region) => {return region.symptomatic}, "red"],
     ["Found", (region) => {return region.found}, "orange"],
     ["Hospitalised", (region) => {return region.hospitalised}, "purple"],

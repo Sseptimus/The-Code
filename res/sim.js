@@ -482,8 +482,8 @@ class SimulationState{
                     }
                 }
 
-                console.log(moveFromOne);
-                console.log(moveFromTwo);
+                //console.log(moveFromOne); 
+                //console.log(moveFromTwo);
 
                 for(var i = 0; i < stateOne.length; i++){
                     stateOne[i] += moveFromTwo[i];
