@@ -447,3 +447,7 @@ function createGraphForRegion(regionName){
 }
 
 
+const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+if (darkThemeMq.matches) {
+    lightToDark();
+}
