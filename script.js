@@ -1,3 +1,11 @@
+document.body.classList.add('js-loading');
+
+window.addEventListener("load", showPage, false);
+
+function showPage() {
+  document.body.classList.remove('js-loading');
+}
+
 //functions 
 var selectedRegion = "New Zealand";
 
@@ -103,13 +111,13 @@ function startStop(){
             runningSim = false;
 
             clearTimeout(timeoutMethod);
-            animatePlay()
+            animatePause();
         }else{
             runningSim = true
             timeoutMethod = setInterval(() => {
                 timestep();
             }, getTimestepInterval())
-            animatePause()
+            animatePlay();
         }
 }
 
@@ -347,7 +355,7 @@ document.onkeydown = keyDownEvent => {
 var chart;
 const maxItems = 300;
 const wantedData = [
-    ["Healthy", (region) => {return region.susceptible + region.exposed}, "blue"],
+    ["Healthy", (region) => {return region.susceptible + region.exposed}, "darkBlue"],
     ["Unknown", (region) => {return region.symptomatic}, "red"],
     ["Found", (region) => {return region.found}, "orange"],
     ["Hospitalised", (region) => {return region.hospitalised}, "purple"],
@@ -436,4 +444,10 @@ function createGraphForRegion(regionName){
         document.getElementById("graph-canvas"),
         config
     );
+}
+
+
+const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+if (darkThemeMq.matches) {
+    lightToDark();
 }

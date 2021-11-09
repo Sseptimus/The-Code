@@ -24,6 +24,7 @@ triangle4.attr("stroke","black")
 
 
 function animatePlay() {
+    console.log("play animation");
     triangle1.animate({"points":square1},100,mina.linear);
     triangle2.animate({"points":square2},100,mina.linear);
     triangle3.animate({"points":square3},100,mina.linear);
@@ -31,6 +32,7 @@ function animatePlay() {
 }
 
 function animatePause(){
+    console.log("pause animation");
     triangle1.animate({"points":trianglePTS},100,mina.linear);
     triangle2.animate({"points":trianglePTS},100,mina.linear);
     triangle3.animate({"points":trianglePTS},100,mina.linear);

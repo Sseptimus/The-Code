@@ -511,7 +511,11 @@ class SimulationState{
                     }
                 }
 
+<<<<<<< HEAD
                 //console.log(moveFromOne);
+=======
+                //console.log(moveFromOne); 
+>>>>>>> 0304fec19bdd8d7d88208b438f2b18d1401cc69b
                 //console.log(moveFromTwo);
 
                 for(var i = 0; i < stateOne.length; i++){
