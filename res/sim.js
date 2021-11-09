@@ -255,6 +255,8 @@ function recalculateSimParams(){
     currentHospitalisationRate = HR * (1 - vacRate * vacRate);
     currentDeathRate = DR * (1 - vacRate * vacRate * vacRate * vacRate);
 
+    travelRate = document.getElementById("travelBox").checked ? 0.005 : 1;
+
     console.log("Basic Reproductive Index: " + R)
 }
 

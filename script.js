@@ -165,6 +165,9 @@ function recolorRegions(){
         regionState = globalState.getRegion(region.getAttribute("name"));
 
         let redRate = (regionState.totalSize - regionState.susceptible) / regionState.totalSize;
+        if(redRate < 0.01 && (regionState.totalSize - regionState.susceptible) != 0){
+            redRate = 0.01;
+        }
         redRate = (Math.log(redRate + 0.01) - Math.log(0.01)) / (Math.log(1.01) - Math.log(0.01))
 
         region.setAttribute("fill", rgb(255 * redRate, 30, 30))
