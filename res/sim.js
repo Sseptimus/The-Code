@@ -241,7 +241,7 @@ function recalculateSimParams(){
     R *= (1 - 0.006 * distancing)
 
     let vaccination = document.getElementById("vacrange").value;
-    R *= (1 - 0.006 * vaccination)
+    R *= (1 - 0.00815 * vaccination)
 
     if(document.getElementById("maskBox").checked){
         R *= 0.7
@@ -250,6 +250,8 @@ function recalculateSimParams(){
     currentR = R;
     currentHospitalisationRate = HR;
     currentDeathRate = DR;
+
+    console.log("Basic Reproductive Index: " + R)
 }
 
 class RegionState{
@@ -290,13 +292,17 @@ class RegionState{
         this.immune = arr[6];
     }
 
+    isStable(){
+        return (this.exposed + this.symptomatic + this.found + this.hospitalised) == 0;
+    }
+
     timestep(){
         //Calculate changes
         const newExposed = binomial(this.susceptible, currentR / (SYMPTOM_LENGTH + 1) * this.symptomatic / this.totalSize);
         const newInfectuous = binomial(this.exposed, 1 / (ASYMPTOMATIC_PERIOD + 1))
-        if(this.exposed > 0){
+        /*if(this.exposed > 0){
             console.log(this.name +": " + newExposed + " new infections")
-        }
+        }*/
         let newFound = binomial(this.symptomatic, currentFindingRate)
         let newHospitalised = binomial(this.found, currentHospitalisationRate / (SYMPTOM_LENGTH + 1))
 
@@ -391,7 +397,7 @@ class SimulationState{
         this.totalPop = 0;
         if(copyFrom == undefined){
             for(const entry in populationsOfRegions){
-                console.log(entry);
+                //console.log(entry);
                 this.regions[entry] = new RegionState(populationsOfRegions[entry], entry)
             }
         }else{
@@ -434,7 +440,7 @@ class SimulationState{
                 let to = this.regions[travelEntry[0]];
 
                 let lookupKey = to.name < from.name ? from.name + "|" + to.name : to.name + "|" + from.name;
-                console.log(lookupKey);
+                //console.log(lookupKey);
                 if(done.includes(lookupKey)) continue;
 
                 let amount = travelEntry[1];
@@ -505,8 +511,8 @@ class SimulationState{
                     }
                 }
 
-                console.log(moveFromOne);
-                console.log(moveFromTwo);
+                //console.log(moveFromOne);
+                //console.log(moveFromTwo);
 
                 for(var i = 0; i < stateOne.length; i++){
                     stateOne[i] += moveFromTwo[i];
@@ -556,6 +562,13 @@ class SimulationState{
         })
 
         return stats;
+    }
+
+    isStable(){
+        Object.values(this.regions).forEach(region => {
+            if(region.isStable() == false) return false;
+        })
+        return true;
     }
 
     copy(){
