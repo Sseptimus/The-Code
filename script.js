@@ -267,20 +267,53 @@ if (isMobile) {// tests of the website is in mobile
 d3.select("svg").call(zoom);
 
 toggled = {};
+
+var clickedRegion = false;
+
 //Init all regions
 d3.select("svg")
     .selectAll("path")
     .each(function () {
+    
         let element = d3.select(this);
         let name = element.attr("name");
         console.log(name);
         console.log("Popultion:", populationsOfRegions[name]);
         element.on("click", () => {
+        
             selectedRegion = name;
             showStatsOfRegion(selectedRegion);
             if (state == 1) switchToStats();
+
+            clickedRegion = true;
+            setTimeout(() => {
+                clickedRegion = false;
+            }, 10);
         });
     });
+
+/*d3.select("svg")
+    .selectAll("rect")
+    .each(function () {
+        let element = d3.select(this);
+        element.on("click", () => {
+            selectedRegion = "New Zealand";
+            showStatsOfRegion(selectedRegion);
+            if(state == 1) switchToStats();
+        });
+    });*/
+
+let SVG = d3.select("svg");
+
+SVG.on("click", () => {
+    if(clickedRegion){
+        return;
+    }
+
+    selectedRegion = "New Zealand";
+    showStatsOfRegion(selectedRegion);
+    if (state == 1) switchToStats();
+});
 
 function timestep() {
     globalState.timestep()

@@ -340,11 +340,15 @@ class RegionState{
             let w3 = 3 * currentFindingRate / (SYMPTOM_LENGTH + 1);
 
             w1 /= (w1 + w2 + w3);
-            w2 /= (w2 + w3)
+            w2 /= (w1 + w2 + w3)
 
             newFound = Math.floor(this.symptomatic * w1);
-            recoveriesFromUnfound = Math.floor((this.symptomatic - newFound) * w2);
-            newHospitalisedFromUnfound = this.found - newFound - recoveriesFromUnfound;
+            recoveriesFromUnfound = Math.floor(this.symptomatic * w2);
+            newHospitalisedFromUnfound = this.symptomatic - newFound - recoveriesFromUnfound;
+        }
+
+        if(newFound + recoveriesFromUnfound + newHospitalisedFromUnfound> this.symptomatic){
+            console.log("Well I've fucked something up")
         }
 
         if(isNaN(newExposed)) console.log("New Exposed is NaN")
@@ -375,6 +379,10 @@ class RegionState{
 
         this.exposed -= newInfectuous;
         this.exposed += newExposed;
+
+        if(newExposed < 0){
+            console.error("New exposed was negative what the fuck")
+        }
 
         this.susceptible -= newExposed;
     }
@@ -532,6 +540,14 @@ class SimulationState{
 
                     stateTwo[i] += moveFromOne[i];
                     stateTwo[i] -= moveFromTwo[i];
+                }
+
+                if(stateOne.filter(x => x < 0).length != 0){
+                    console.log("Travel made a stat negative");
+                }
+
+                if(stateTwo.filter(x => x < 0).length != 0){
+                    console.log("Travel made a stat negative");
                 }
 
                 from.setStateFromArray(stateOne);
