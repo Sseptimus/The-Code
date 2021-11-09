@@ -35,7 +35,7 @@ body{
     margin-left: 0%;
 }
 
-#region, #population, #progressbar, #virusData {
+#region, #population, #progressbar, #virusData, #diffStats {
     padding-left: 10%;
 }
 
@@ -241,7 +241,7 @@ body{
     left: 2%;
 }
 
-#alpha, #beta, #gamma, #delta, #original, .mask, .travel, .border, .distance, .vaccination {
+#alpha, #beta, #gamma, #delta, #original, .mask, .travel, .border, .distance, .vaccination, .testing {
     filter: hue-rotate(320deg);
     margin-left: 10%;
 }
@@ -329,8 +329,9 @@ body{
     transition: all .2s ease-in-out;
 
 }
-#distancerange,#vacrange{
+#distancerange,#vacrange,#testrange{
     width: 50%;
+    vertical-align:-5px;
 }
 
 .bigButton:hover{
@@ -338,10 +339,6 @@ body{
     transform: scale(1.1)
 }
 
-
-#distancerange,#vacrange{
-    vertical-align:-5px;
-}
 svg{
     position: relative;
     top: 50%;

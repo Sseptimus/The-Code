@@ -141,10 +141,17 @@
                     <br />
                     <label id="recoveredLabel" for="recoveredProgress">No recoveries</label>
                     <progress id="recoveredProgress" value=0 max=100></progress>
-                    <br>
+                    <br />
                     <button class="bigButton" onclick="createGraphForRegion(selectedRegion)">Graph</button>
                 </div>
-                <!--<div id="strainTitle"><label>Virus stats</label><br></div>-->
+                <div id="strainTitle"><label>Diff Stats</label></div>
+                <div id="diffStats" style="color:gray">
+                    <label id="newCasesLabel">New Cases: NA</label>
+                    <br>
+                    <label id="newDeathsLabel">New Deaths: NA</label>
+                    <br>
+                    <label id="newRecoveredLabel">New Recoveries: NA</label>
+                </div>
             </div>
             <div class="parameters" , id="parameters" onchange="recalculateSimParams()">
                 <h1 id="title">Parameters</h1>
@@ -160,6 +167,11 @@
                         <input id="vacrange" type="range" min="0" max="100" value="0" oninput="updatevac()">
                         <label>Vaccination:</label>
                         <label id="vac">0%</label>
+                    </div>
+                    <div class="testing">
+                        <input id="testrange" type="range" min="0" max="100" value="10" oninput="updatetest()">
+                        <label>Testing:</label>
+                        <label id="test">10%</label>
                     </div>
                     <br>
                     <div class="mask">
