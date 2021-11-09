@@ -25,6 +25,9 @@ var hospitalisedLabelElement;
 var hospitalisedProgressElement;
 var recProgressElement;
 var recLabelElement;
+var dateElement;
+
+var simDate = new Date(Date.now());
 
 function loaded() {
     resetSimulation();
@@ -46,6 +49,9 @@ function loaded() {
   hospitalisedProgressElement = document.getElementById("hospitalProgress")
   recLabelElement = document.getElementById("recoveredLabel")
   recProgressElement = document.getElementById("recoveredProgress")
+
+  dateElement = document.getElementById("date")
+    dateElement.innerHTML = simDate.toLocaleDateString();
 
   showStatsOfRegion(selectedRegion);
   recalculateSimParams();
@@ -165,6 +171,10 @@ function recolorRegions(){
     }
 }
 
+function updateDate(){
+    dateElement.innerHTML = simDate.toLocaleDateString();
+}
+
 var p
 
 function lightToDark(){
@@ -261,6 +271,9 @@ function timestep(){
     globalState.timestep()
     showStatsOfRegion(selectedRegion);
     recolorRegions();
+
+    simDate.setUTCSeconds(simDate.getUTCSeconds() + 86400); //Increment day
+    updateDate();
 
     if(globalState.isStable()){
         stopSim();

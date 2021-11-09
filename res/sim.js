@@ -1,5 +1,6 @@
 const SYMPTOM_LENGTH = 7
 const ASYMPTOMATIC_PERIOD = 3
+const BASE_TRAVEL_RATE = 0.5;
 
 const populationsOfRegions = {
     "Manawatu-Wanganui" : 250400,
@@ -188,6 +189,7 @@ var currentR = 2.5; //Will be calculated from parameters
 var currentDeathRate = 0.0066;
 var currentHospitalisationRate = 0.0243;
 var currentFindingRate = 0.01;
+var travelRate = 1;
 
 function randint(upper, lower){
     return Math.floor(Math.random() * (upper - lower) + lower);
@@ -247,9 +249,11 @@ function recalculateSimParams(){
         R *= 0.7
     }
 
+    const vacRate = Math.max(0, vaccination / 100 - 0.01);
+
     currentR = R;
-    currentHospitalisationRate = HR;
-    currentDeathRate = DR;
+    currentHospitalisationRate = HR * (1 - vacRate * vacRate);
+    currentDeathRate = DR * (1 - vacRate * vacRate * vacRate * vacRate);
 
     console.log("Basic Reproductive Index: " + R)
 }
@@ -443,7 +447,7 @@ class SimulationState{
                 //console.log(lookupKey);
                 if(done.includes(lookupKey)) continue;
 
-                let amount = travelEntry[1];
+                let amount = travelEntry[1] * BASE_TRAVEL_RATE * travelRate;
 
                 let stateOne = from.getStateAsArray();
                 let stateTwo = to.getStateAsArray();
@@ -580,13 +584,11 @@ class SimulationState{
 var globalState;
 
 function resetSimulation(){
+    data = [];
     globalState = new SimulationState();
     data.push(globalState.copy());
     simCanRun = true;
 }
-
-resetSimulation();
-
 function test(){
     Object.entries(globalState.regions).forEach((entry) => {
         entry[1].infect(5);
