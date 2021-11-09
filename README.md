@@ -9,16 +9,6 @@
 </p>
 <br>
 
-## <span id = "icon">&#128247;</span> Screenshots
-
-<div id = "screenshots">
-<div id="slideshow">
-<img src="img\Covidsimwebsite.PNG" alt="Description for image" width = "50%" id = "image1">
-<img src="img\lightModeScreneshot.PNG" alt="Description for image" width = "50%" id = "image1">
-</div>
-</div>
-<br>
-
 ## <span id="icon">&#10719;</span> Usage
 <p id = "description">well you can't use it its not finished but I will update this when it is finished</p>
 
