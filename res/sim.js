@@ -348,7 +348,7 @@ class RegionState{
         }
 
         if(newFound + recoveriesFromUnfound + newHospitalisedFromUnfound> this.symptomatic){
-            console.log("Well I've fucked something up")
+            console.log("There's beem an error")
         }
 
         if(isNaN(newExposed)) console.log("New Exposed is NaN")
@@ -379,10 +379,6 @@ class RegionState{
 
         this.exposed -= newInfectuous;
         this.exposed += newExposed;
-
-        if(newExposed < 0){
-            console.error("New exposed was negative what the fuck")
-        }
 
         this.susceptible -= newExposed;
     }
