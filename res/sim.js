@@ -511,11 +511,7 @@ class SimulationState{
                     }
                 }
 
-<<<<<<< HEAD
                 //console.log(moveFromOne);
-=======
-                //console.log(moveFromOne); 
->>>>>>> 0304fec19bdd8d7d88208b438f2b18d1401cc69b
                 //console.log(moveFromTwo);
 
                 for(var i = 0; i < stateOne.length; i++){
@@ -561,7 +557,7 @@ class SimulationState{
             stats.exposed += region.exposed;
             stats.symptomatic += region.symptomatic;
             stats.dead += region.dead;
-            stats.found += stats.found;
+            stats.found += region.found;
             stats.hospitalised += region.hospitalised;
         })
 
@@ -569,10 +565,11 @@ class SimulationState{
     }
 
     isStable(){
+        let stable = true;
         Object.values(this.regions).forEach(region => {
-            if(region.isStable() == false) return false;
+            if(!region.isStable()) stable = false;
         })
-        return true;
+        return stable;
     }
 
     copy(){
@@ -585,6 +582,7 @@ var globalState;
 function resetSimulation(){
     globalState = new SimulationState();
     data.push(globalState.copy());
+    simCanRun = true;
 }
 
 resetSimulation();

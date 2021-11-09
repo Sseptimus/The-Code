@@ -6,6 +6,8 @@ function showPage() {
   document.body.classList.remove('js-loading');
 }
 
+var simCanRun = false;
+
 //functions 
 var selectedRegion = "New Zealand";
 
@@ -25,6 +27,8 @@ var recProgressElement;
 var recLabelElement;
 
 function loaded() {
+    resetSimulation();
+
   document.getElementById("stats").style.display = "none";
   state = 1
 
@@ -106,13 +110,17 @@ function getTimestepInterval(){
 var runningSim = false
 var timeoutMethod = 0;
 function startStop(){
-        console.log("start/stop");
         if (runningSim){
             runningSim = false;
 
             clearTimeout(timeoutMethod);
             animatePause();
         }else{
+            if(!simCanRun){
+                console.error("Simulation cannot run");
+                return;
+            }
+
             runningSim = true
             timeoutMethod = setInterval(() => {
                 timestep();
@@ -216,7 +224,9 @@ function lightToDark(){
 
 // variabales
 var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-let zoom = d3.zoom().on("zoom", zooming);
+let zoom = d3.zoom()
+    .scaleExtent([0.1, 5])
+    .on("zoom", zooming);
 var state = 0;
 var eyepain = "none"
 
@@ -242,7 +252,8 @@ d3.select("svg")
     console.log("Popultion:", populationsOfRegions[name]);
     element.on("click", () => {
         selectedRegion = name;
-        showStatsOfRegion(selectedRegion)
+        showStatsOfRegion(selectedRegion);
+        if(state == 1) switchToStats();
     });
 });
 
@@ -250,6 +261,20 @@ function timestep(){
     globalState.timestep()
     showStatsOfRegion(selectedRegion);
     recolorRegions();
+
+    if(globalState.isStable()){
+        stopSim();
+    }
+}
+
+function stopSim(){
+    if(runningSim){
+        startStop()
+    }
+
+    simCanRun = false;
+    clearTimeout(timeoutMethod);
+    document.getElementById("sim-end").style.display = "block";
 }
 
 function getCookie(cname){

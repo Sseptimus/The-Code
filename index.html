@@ -22,7 +22,6 @@
 
     <div class="wrapper", style="opacity:0.5;pointer-events:none;">
         <div class="main" , id="main">
-            <div id="timestep-button"><button onclick="timestep()">timestep()</button></div>
             <div id="popup">
                 <button class="quit-messsage" ,
                     onclick="document.getElementById(&#34;popup&#34;).style.display = &#34;none&#34;">x</button>
@@ -262,6 +261,21 @@
             <a href="https://covid19.govt.nz/">the government CoViD-19 website</a> or on <a href="https://www.who.int/covid-19">the World Health Organization website</a>.
         </p>
     </div>
+    <div id = "sim-end" class = "popup-container" style = "z-index: 10;display: none;">
+        <div>
+            <h1 style="display:inline-block;margin-top:10px;margin-bottom:10px">Simulation ended</h1>
+            <div style="display:inline-block">
+                <button style="position:fixed;top:20px;right:20px" class="quit-message" onclick="hideSimEnd()">X</button>
+            </div>
+        </div>
+        <p>
+            The simulation has ended. You can either restart the simulation or close the window.
+        </p>
+        <div style="display:inline-block">
+            <button style="position:fixed;top:20px;right:20px" class="quit-message" onclick="resetSim()">Restart</button>
+            <button style="position:fixed;top:20px;right:80px" class="quit-message" onclick="document.getElementById('sim-end').style.display = 'none'">Close</button>
+        </div>
+    <div>
 </body>
 
 </html>
