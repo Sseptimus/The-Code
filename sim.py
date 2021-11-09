@@ -1,3 +1,6 @@
+##This is an early prototype of the simulation made in python. In the final report this is the second prototype and is the exact same program
+##that generated the GUI and data that is shown.
+
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, Button, RadioButtons
