@@ -348,7 +348,7 @@ function showStatsOfRegion(regionName) {
 
     let newCases = "NA", newDeaths = "NA", newRecoveries = "NA";
 
-    if(data.length > 1){ 
+    if (data.length > 1) {
         const prevState = data[data.length - 2].getRegion(regionName);
 
         newCases = prevState.susceptible - regionState.susceptible;
@@ -356,9 +356,9 @@ function showStatsOfRegion(regionName) {
         newRecoveries = regionState.immune - prevState.immune;
     }
 
-    newCasesElement.innerHTML ="New Cases: " + newCases;
-    newDeathsElement.innerHTML ="New Deaths: " + newDeaths;
-    newRecoveriesElement.innerHTML ="New Recoveries: " + newRecoveries;
+    newCasesElement.innerHTML = "New Cases: " + newCases;
+    newDeathsElement.innerHTML = "New Deaths: " + newDeaths;
+    newRecoveriesElement.innerHTML = "New Recoveries: " + newRecoveries;
 }
 
 function hideDisclaimer() {
@@ -415,10 +415,40 @@ const wantedData = [
     ["Dead", (region) => { return region.dead }, "#ddd"],
     ["Recovered", (region) => { return region.immune }, "green"]
 ]
-function createGraphForRegion(regionName) {
-    if (chart != undefined) {
-        chart.destroy();
+
+const wantedDiffData = [
+    ["New Cases", (prevState, newState) => { return prevState.susceptible - newState.susceptible }, "darkBlue"],
+    ["New Deaths", (prevState, newState) => { return newState.dead - prevState.dead }, "gray"],
+    ["New Recoveries", (prevState, newState) => { return newState.immune - prevState.immune }, "green"]
+]
+
+function createDiffGraphForRegion(regionName) {
+    let datasets = [];
+    const step = Math.floor(data.length / maxItems) + 1;
+
+    for (let dataMetaData of wantedDiffData) {
+        let dataList = [];
+
+        for (var i = 0; i < data.length - 1; i += step) {
+            const prevState = data[i].getRegion(regionName);
+            const newState = data[i + 1].getRegion(regionName);
+
+            dataList.push(dataMetaData[1](prevState, newState));
+        }
+
+        const dataset = {
+            label: dataMetaData[0],
+            data: dataList,
+            borderColor: dataMetaData[2]
+        }
+
+        datasets.push(dataset);
     }
+
+    createGraphOf(datasets, step);
+}
+
+function createGraphForRegion(regionName) {
     let datasets = []
     var step = Math.floor(data.length / maxItems) + 1;
 
@@ -444,23 +474,34 @@ function createGraphForRegion(regionName) {
         datasets.push(dataset);
     }
 
+    createGraphOf(datasets, step, true);
+}
+
+function createGraphOf(datasets, step, stacked = false) {
+    if (chart != undefined) {
+        chart.destroy();
+    }
+
     let labels = [];
     var index = 0;
     for (var i = 0; i < data.length; i++) {
         if (i % step != 0) continue;
         labels.push("Day " + i);
 
-        let total = 0;
-        for (var j = datasets.length - 1; j >= 0; j--) {
-            const value = datasets[j].data[index];
-            datasets[j].data[index] += total;
-            total += value;
+        if(stacked){
+            let total = 0;
+            for (var j = datasets.length - 1; j >= 0; j--) {
+                const value = datasets[j].data[index];
+                datasets[j].data[index] += total;
+                total += value;
+            }
+            index++;
         }
-        index++;
     }
 
-    datasets.reverse();
-    console.log(datasets)
+    if(stacked){
+        datasets.reverse();
+    }
 
     let config = {
         type: 'line',
@@ -470,23 +511,26 @@ function createGraphForRegion(regionName) {
         },
         options: {
             responsive: false,
-            plugins: {
-                tooltip: {
-                    callbacks: {
-                        label: function (context) {
-                            let value = context.parsed.y;
-                            if (context.datasetIndex - 1 != -1) {
-                                value -= datasets[context.datasetIndex - 1].data[context.dataIndex];
-                            }
-
-                            return context.dataset.label + ": " + value;
-                        }
-                    }
-                }
-            },
             interaction: {
                 mode: 'index',
                 acis: 'y'
+            }
+        }
+    }
+
+    if (stacked) {
+        config.options = {
+            tooltip: {
+                callbacks: {
+                    label: function (context) {
+                        let value = context.parsed.y;
+                        if (context.datasetIndex - 1 != -1) {
+                            value -= datasets[context.datasetIndex - 1].data[context.dataIndex];
+                        }
+            
+                        return context.dataset.label + ": " + value;
+                    }
+                }
             }
         }
     }
@@ -498,7 +542,6 @@ function createGraphForRegion(regionName) {
         config
     );
 }
-
 
 const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
 if (darkThemeMq.matches) {
