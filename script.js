@@ -292,17 +292,6 @@ d3.select("svg")
         });
     });
 
-/*d3.select("svg")
-    .selectAll("rect")
-    .each(function () {
-        let element = d3.select(this);
-        element.on("click", () => {
-            selectedRegion = "New Zealand";
-            showStatsOfRegion(selectedRegion);
-            if(state == 1) switchToStats();
-        });
-    });*/
-
 let SVG = d3.select("svg");
 
 SVG.on("click", () => {
