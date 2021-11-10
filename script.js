@@ -378,9 +378,9 @@ function showStatsOfRegion(regionName) {
         newRecoveries = regionState.immune - prevState.immune;
     }
 
-    newCasesElement.innerHTML = "New Cases: " + newCases;
-    newDeathsElement.innerHTML = "New Deaths: " + newDeaths;
-    newRecoveriesElement.innerHTML = "New Recoveries: " + newRecoveries;
+    newCasesElement.innerHTML = "New Cases: " + Math.max(0, newCases);
+    newDeathsElement.innerHTML = "New Deaths: " + Math.max(0, newDeaths);
+    newRecoveriesElement.innerHTML = "New Recoveries: " + Math.max(0, newRecoveries);
 }
 
 function hideDisclaimer() {
@@ -455,7 +455,7 @@ function createDiffGraphForRegion(regionName) {
             const prevState = data[i].getRegion(regionName);
             const newState = data[i + 1].getRegion(regionName);
 
-            dataList.push(dataMetaData[1](prevState, newState));
+            dataList.push(Math.max(0, dataMetaData[1](prevState, newState)));
         }
 
         const dataset = {
